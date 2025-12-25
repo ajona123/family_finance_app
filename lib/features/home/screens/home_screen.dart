@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/providers/member_provider.dart';
@@ -116,17 +117,11 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       context: context,
       backgroundColor: Colors.transparent,
       builder: (context) => Container(
-        margin: const EdgeInsets.all(AppConstants.spacingL),
+        margin: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(AppConstants.radiusXL),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
-          ],
+          color: AppColors.background,
+          borderRadius: AppRadius.lg,
+          boxShadow: [AppShadows.lg],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -138,20 +133,20 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 style: AppTypography.headingSmall,
               ),
             ),
+            Divider(Spacing.lg),
+              child: Text(
+                'Menu Transaksi',
+                style: AppTypography.headingSmall,
+              ),
+            ),
             Divider(
               color: AppColors.border,
               height: 1,
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.add_circle_outline_rounded,
-                color: Color(0xFF6366F1),
-                size: 20,
-              ),
-              title: Text(
-                'Catat Transaksi',
-                style: AppTypography.labelMedium,
-              ),
+                color: AppColors.accent
               onTap: () {
                 Navigator.pop(context);
                 _navigateToAddTransaction();
@@ -164,9 +159,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               endIndent: AppConstants.spacingL,
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.payment_rounded,
-                color: Color(0xFF10B981),
+                color: AppColors.success,
                 size: 20,
               ),
               title: Text(
@@ -182,12 +177,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               color: AppColors.border,
               height: 1,
               indent: 60,
-              endIndent: AppConstants.spacingL,
+              endIndent: AppSpacing.lg,
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.receipt_long_rounded,
-                color: Color(0xFFEF5350),
+                color: AppColors.error,
                 size: 20,
               ),
               title: Text(
@@ -203,12 +198,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               color: AppColors.border,
               height: 1,
               indent: 60,
-              endIndent: AppConstants.spacingL,
+              endIndent: AppSpacing.lg,
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.payment_rounded,
-                color: Color(0xFF26A69A),
+                color: AppColors.secondary,
                 size: 20,
               ),
               title: Text(
@@ -224,12 +219,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               color: AppColors.border,
               height: 1,
               indent: 60,
-              endIndent: AppConstants.spacingL,
+              endIndent: AppSpacing.lg,
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.store_rounded,
-                color: Color(0xFFFF7043),
+                color: AppColors.warning,
                 size: 20,
               ),
               title: Text(
@@ -241,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 _navigateToSupplierDebtList();
               },
             ),
-            const SizedBox(height: AppConstants.spacingM),
+            SizedBox(height: AppSpacing.md),
           ],
         ),
       ),
@@ -300,32 +295,32 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             SliverToBoxAdapter(
               child: Column(
                 children: [
-                  const SizedBox(height: AppConstants.spacingM),
+                  SizedBox(height: AppSpacing.md),
 
                   // BALANCE CARD
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingL,
+                      horizontal: AppSpacing.lg,
                     ),
-                    child: BalanceCard(),
+                    child: const BalanceCard(),
                   ),
 
-                  const SizedBox(height: AppConstants.spacingL),
+                  SizedBox(height: AppSpacing.lg),
 
                   // QUICK STATS
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingL,
+                      horizontal: AppSpacing.lg,
                     ),
-                    child: QuickStats(),
+                    child: const QuickStats(),
                   ),
 
-                  const SizedBox(height: AppConstants.spacingXL),
+                  SizedBox(height: AppSpacing.xxl),
 
                   // RECENT TRANSACTIONS
                   const RecentTransactions(),
 
-                  const SizedBox(height: 100), // Space for FAB
+                  SizedBox(height: AppSpacing.huge), // Space for FAB
                 ],
               ),
             ),
@@ -338,39 +333,33 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         scale: _fabAnimation,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: AppRadius.md,
             gradient: AppColors.primaryGradient,
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primary.withOpacity(0.3),
-                blurRadius: 20,
-                offset: const Offset(0, 8),
-              ),
-            ],
+            boxShadow: [AppShadows.xl],
           ),
           child: Material(
             color: Colors.transparent,
             child: InkWell(
               onTap: _showFABMenu,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: AppRadius.md,
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 16,
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.xl,
+                  vertical: AppSpacing.md,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.add_rounded,
-                      color: Colors.white,
+                      color: AppColors.textOnPrimary,
                       size: 24,
                     ),
-                    const SizedBox(width: 8),
+                    SizedBox(width: AppSpacing.sm),
                     Text(
                       'Menu',
                       style: AppTypography.labelLarge.copyWith(
-                        color: Colors.white,
+                        color: AppColors.textOnPrimary,
                       ),
                     ),
                   ],

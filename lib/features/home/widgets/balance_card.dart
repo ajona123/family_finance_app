@@ -4,6 +4,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_animations.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 
@@ -67,19 +68,8 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
         child: Container(
           decoration: BoxDecoration(
             gradient: AppColors.primaryGradient,
-            borderRadius: BorderRadius.circular(AppConstants.radiusXL),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primary.withOpacity(0.3),
-                blurRadius: 30,
-                offset: const Offset(0, 10),
-              ),
-              BoxShadow(
-                color: AppColors.primaryDark.withOpacity(0.2),
-                blurRadius: 50,
-                offset: const Offset(0, 20),
-              ),
-            ],
+            borderRadius: AppRadius.xl,
+            boxShadow: [AppShadows.xl],
           ),
           child: Stack(
             children: [
@@ -87,7 +77,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+                    borderRadius: AppRadius.xl,
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -129,7 +119,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
 
               // CONTENT
               Padding(
-                padding: const EdgeInsets.all(AppConstants.spacingL),
+                padding: EdgeInsets.all(AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -137,27 +127,27 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.xs,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: AppRadius.full,
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.calendar_today_rounded,
-                                color: Colors.white,
+                                color: AppColors.textOnPrimary,
                                 size: 12,
                               ),
-                              const SizedBox(width: 6),
+                              SizedBox(width: AppSpacing.xs),
                               Text(
                                 'Saldo Bulan Ini',
                                 style: AppTypography.labelSmall.copyWith(
-                                  color: Colors.white,
+                                  color: AppColors.textOnPrimary,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -167,7 +157,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                       ],
                     ),
 
-                    const SizedBox(height: AppConstants.spacingL),
+                    SizedBox(height: AppSpacing.lg),
 
                     // BALANCE AMOUNT
                     TweenAnimationBuilder<double>(
@@ -178,7 +168,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                         return Text(
                           CurrencyFormatter.format(value),
                           style: AppTypography.displayLarge.copyWith(
-                            color: Colors.white,
+                            color: AppColors.textOnPrimary,
                             fontSize: 36,
                             fontWeight: FontWeight.bold,
                             letterSpacing: -1,
@@ -187,19 +177,19 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                       },
                     ),
 
-                    const SizedBox(height: AppConstants.spacingM),
+                    SizedBox(height: AppSpacing.md),
 
                     // CHANGE PERCENTAGE
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.xs,
                       ),
                       decoration: BoxDecoration(
                         color: isPositive
                             ? Colors.white.withOpacity(0.2)
-                            : Colors.red.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(12),
+                            : AppColors.error.withOpacity(0.2),
+                        borderRadius: AppRadius.md,
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -208,14 +198,14 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                             isPositive
                                 ? Icons.trending_up_rounded
                                 : Icons.trending_down_rounded,
-                            color: Colors.white,
+                            color: AppColors.textOnPrimary,
                             size: 16,
                           ),
-                          const SizedBox(width: 6),
+                          SizedBox(width: AppSpacing.xs),
                           Text(
                             '${isPositive ? '+' : ''}${changePercentage.toStringAsFixed(1)}% dari bulan lalu',
                             style: AppTypography.bodySmall.copyWith(
-                              color: Colors.white,
+                              color: AppColors.textOnPrimary,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

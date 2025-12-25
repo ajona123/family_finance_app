@@ -4,6 +4,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_animations.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 
@@ -70,7 +71,7 @@ class _QuickStatsState extends State<QuickStats> with TickerProviderStateMixin {
               ),
             ),
 
-            const SizedBox(width: AppConstants.spacingM),
+            SizedBox(width: AppSpacing.md),
 
             // EXPENSE CARD
             Expanded(
@@ -144,10 +145,10 @@ class _StatCardState extends State<_StatCard> with SingleTickerProviderStateMixi
         curve: Curves.easeOut,
         transform: Matrix4.identity()..scale(_isPressed ? 0.95 : 1.0),
         child: Container(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            borderRadius: AppRadius.lg,
             boxShadow: AppAnimations.cardShadowPressed(_isPressed),
           ),
           child: Column(
@@ -155,20 +156,20 @@ class _StatCardState extends State<_StatCard> with SingleTickerProviderStateMixi
             children: [
               // ICON
               Container(
-                width: 48,
-                height: 48,
+                width: AppIconSize.lg,
+                height: AppIconSize.lg,
                 decoration: BoxDecoration(
                   gradient: widget.gradient,
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: AppRadius.md,
                 ),
                 child: Icon(
                   widget.icon,
-                  color: Colors.white,
+                  color: AppColors.textOnPrimary,
                   size: 24,
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingM),
+              SizedBox(height: AppSpacing.md),
 
               // LABEL
               Text(
@@ -178,7 +179,7 @@ class _StatCardState extends State<_StatCard> with SingleTickerProviderStateMixi
                 ),
               ),
 
-              const SizedBox(height: 4),
+              SizedBox(height: AppSpacing.xs),
 
               // AMOUNT (Animated)
               TweenAnimationBuilder<double>(

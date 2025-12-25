@@ -44,10 +44,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Family Finance',
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
+        theme: AppTheme.light(),
 
         // Set this to true if you want dark theme
-        // darkTheme: AppTheme.darkTheme,
+        // darkTheme: AppTheme.dark(),
         // themeMode: ThemeMode.system,
 
         home: const MainShell(),

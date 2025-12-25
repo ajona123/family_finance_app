@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/date_helper.dart';
 import '../../../core/utils/haptic_feedback.dart';
@@ -30,8 +31,8 @@ class RecentTransactions extends StatelessWidget {
       children: [
         // HEADER
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppConstants.spacingL,
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,7 +56,7 @@ class RecentTransactions extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: AppConstants.spacingM),
+        SizedBox(height: AppSpacing.md),
 
         // TRANSACTIONS LIST
         ListView.builder(
@@ -142,9 +143,9 @@ class _TransactionGroup extends StatelessWidget {
       children: [
         // DATE LABEL
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppConstants.spacingL,
-            vertical: AppConstants.spacingS,
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.sm,
           ),
           child: Text(
             dateLabel,
@@ -267,7 +268,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                   'Transaksi yang dihapus tidak dapat dikembalikan.',
                 ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: AppRadius.lg,
                 ),
                 actions: [
                   TextButton(
@@ -288,18 +289,18 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
           onDismissed: (_) => _deleteTransaction(context),
           background: Container(
             alignment: Alignment.centerRight,
-            padding: const EdgeInsets.only(right: AppConstants.spacingL),
-            margin: const EdgeInsets.symmetric(
-              horizontal: AppConstants.spacingL,
+            padding: EdgeInsets.only(right: AppSpacing.lg),
+            margin: EdgeInsets.symmetric(
+              horizontal: AppSpacing.lg,
               vertical: 4,
             ),
             decoration: BoxDecoration(
               gradient: AppColors.expenseGradient,
-              borderRadius: BorderRadius.circular(AppConstants.radiusL),
+              borderRadius: AppRadius.lg,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.delete_outline_rounded,
-              color: Colors.white,
+              color: AppColors.textOnPrimary,
               size: 28,
             ),
           ),
@@ -331,33 +332,27 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                         );
                       }
                     : null,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            borderRadius: AppRadius.lg,
             child: Container(
-              margin: const EdgeInsets.symmetric(
-                horizontal: AppConstants.spacingL,
+              margin: EdgeInsets.symmetric(
+                horizontal: AppSpacing.lg,
                 vertical: 4,
               ),
-              padding: const EdgeInsets.all(AppConstants.spacingM),
+              padding: EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
                 color: AppColors.cardBackground,
-                borderRadius: BorderRadius.circular(AppConstants.radiusL),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.shadowLight,
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
+                borderRadius: AppRadius.lg,
+                boxShadow: [AppShadows.sm],
               ),
               child: Row(
               children: [
                 // CATEGORY ICON
                 Container(
-                  width: 48,
-                  height: 48,
+                  width: AppIconSize.lg,
+                  height: AppIconSize.lg,
                   decoration: BoxDecoration(
                     color: category.color,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: AppRadius.md,
                   ),
                   child: Center(
                     child: Text(
@@ -367,7 +362,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                   ),
                 ),
 
-                const SizedBox(width: AppConstants.spacingM),
+                SizedBox(width: AppSpacing.md),
 
                 // INFO
                 Expanded(
@@ -380,18 +375,18 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      SizedBox(height: AppSpacing.xs),
                       Row(
                         children: [
                           if (member != null) ...[
                             Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 2,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: AppSpacing.sm,
+                                vertical: AppSpacing.xs,
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.primary.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(6),
+                                borderRadius: AppRadius.sm,
                               ),
                               child: Text(
                                 member.name,
@@ -401,7 +396,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(width: AppSpacing.sm),
                           ],
                           // SUPPLIER NAME (if meat transaction)
                           if (widget.transaction.hasMeatItems &&
@@ -470,7 +465,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(width: AppSpacing.sm),
                           ],
                           // SUPPLIER STATUS (if supplier debt only, not meat)
                           if (widget.transaction.supplierId != null && 
