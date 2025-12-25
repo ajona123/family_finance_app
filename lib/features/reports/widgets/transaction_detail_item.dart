@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/models/transaction.dart';
 import '../../../data/models/category.dart';
@@ -33,11 +34,11 @@ class TransactionDetailItem extends StatelessWidget {
     final dateFormatter = DateFormat('dd/MM/yyyy HH:mm');
 
     return Container(
-      margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Column(
@@ -76,19 +77,19 @@ class TransactionDetailItem extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Category and type badges
           Row(
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppConstants.spacingM,
-                  vertical: AppConstants.spacingS,
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.sm,
                 ),
                 decoration: BoxDecoration(
                   color: _getCategoryColor().withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                   border: Border.all(
                     color: _getCategoryColor().withOpacity(0.3),
                   ),
@@ -101,16 +102,16 @@ class TransactionDetailItem extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppConstants.spacingM,
-                  vertical: AppConstants.spacingS,
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.sm,
                 ),
                 decoration: BoxDecoration(
                   color: (isIncome ? const Color(0xFF10B981) : const Color(0xFFEF5350))
                       .withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                   border: Border.all(
                     color: (isIncome ? const Color(0xFF10B981) : const Color(0xFFEF5350))
                         .withOpacity(0.3),
@@ -129,7 +130,7 @@ class TransactionDetailItem extends StatelessWidget {
 
           // Notes if available
           if (transaction.note != null && transaction.note!.isNotEmpty) ...[
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
             Text(
               'Catatan',
               style: AppTypography.labelSmall.copyWith(
@@ -147,12 +148,12 @@ class TransactionDetailItem extends StatelessWidget {
 
           // Meat items if available
           if (transaction.hasMeatItems) ...[
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
             Container(
-              padding: const EdgeInsets.all(AppConstants.spacingM),
+              padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
                 color: AppColors.background,
-                borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                borderRadius: BorderRadius.circular(AppRadius.md),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,10 +164,10 @@ class TransactionDetailItem extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
                   ...transaction.meatItems!.map((item) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: AppConstants.spacingS),
+                      padding: const EdgeInsets.only(bottom: AppSpacing.sm),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -207,7 +208,7 @@ class TransactionDetailItem extends StatelessWidget {
 
           // Payment status if applicable
           if (transaction.paymentStatus != null) ...[
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -219,15 +220,15 @@ class TransactionDetailItem extends StatelessWidget {
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingM,
-                    vertical: AppConstants.spacingS,
+                    horizontal: AppSpacing.md,
+                    vertical: AppSpacing.sm,
                   ),
                   decoration: BoxDecoration(
                     color: (transaction.paymentStatus == 'lunas'
                             ? const Color(0xFF10B981)
                             : const Color(0xFFF59E0B))
                         .withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                     border: Border.all(
                       color: (transaction.paymentStatus == 'lunas'
                               ? const Color(0xFF10B981)
@@ -274,3 +275,5 @@ class TransactionDetailItem extends StatelessWidget {
     );
   }
 }
+
+

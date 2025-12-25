@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/default_customers.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/providers/transaction_provider.dart';
@@ -121,10 +122,10 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
       barrierDismissible: false,
       builder: (context) => Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+          borderRadius: BorderRadius.circular(AppRadius.xl),
         ),
         child: Container(
-          padding: const EdgeInsets.all(AppConstants.spacingXL),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -133,7 +134,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                 height: 80,
                 decoration: BoxDecoration(
                   gradient: AppColors.incomeGradient,
-                  borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+                  borderRadius: BorderRadius.circular(AppRadius.xl),
                 ),
                 child: const Icon(
                   Icons.check_rounded,
@@ -141,13 +142,13 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   size: 48,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
               Text(
                 'Pembayaran Berhasil!',
                 style: AppTypography.headingSmall,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: AppConstants.spacingM),
+              const SizedBox(height: AppSpacing.md),
               Text(
                 'Rp ${displayAmount.toStringAsFixed(0).replaceAll(RegExp(r'\B(?=(\d{3})+(?!\d))'), '.')}',
                 style: AppTypography.displaySmall.copyWith(
@@ -155,7 +156,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               Text(
                 'dari $displayCustomer',
                 style: AppTypography.bodyMedium.copyWith(
@@ -163,12 +164,12 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                 ),
               ),
               if (result.fullyPaidCustomers.isNotEmpty) ...[
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 Container(
-                  padding: const EdgeInsets.all(AppConstants.spacingM),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   decoration: BoxDecoration(
                     color: AppColors.income.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   child: Row(
                     children: [
@@ -177,7 +178,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                         color: Color(0xFF10B981),
                         size: 24,
                       ),
-                      const SizedBox(width: AppConstants.spacingM),
+                      const SizedBox(width: AppSpacing.md),
                       Expanded(
                         child: Text(
                           'Hutang $displayCustomer sudah LUNAS!',
@@ -191,7 +192,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   ),
                 ),
               ],
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -203,7 +204,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.income,
                     padding: const EdgeInsets.symmetric(
-                      vertical: AppConstants.spacingM,
+                      vertical: AppSpacing.md,
                     ),
                   ),
                   child: Text(
@@ -240,16 +241,16 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(AppConstants.spacingL),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // INFO BOX
             Container(
-              padding: const EdgeInsets.all(AppConstants.spacingL),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               decoration: BoxDecoration(
                 color: AppColors.income.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
                 border: Border.all(
                   color: AppColors.income.withOpacity(0.3),
                 ),
@@ -261,7 +262,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                     color: AppColors.income,
                     size: 24,
                   ),
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: Text(
                       'Catat pembayaran hutang dari pelanggan',
@@ -273,18 +274,18 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: AppConstants.spacingXL),
+            const SizedBox(height: AppSpacing.xxl),
 
             // CUSTOMER SELECTION
             Text(
               'Nama Pelanggan',
               style: AppTypography.labelMedium,
             ),
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: const Color(0xFFE8E8E8)),
-                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
               ),
               child: DropdownButton<String>(
                 value: _selectedCustomer,
@@ -301,8 +302,8 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                     value: name,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: AppConstants.spacingM,
-                        vertical: AppConstants.spacingS,
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.sm,
                       ),
                       child: Text(
                         name,
@@ -315,19 +316,19 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   setState(() => _selectedCustomer = value);
                 },
                 padding: const EdgeInsets.only(
-                  left: AppConstants.spacingM,
-                  right: AppConstants.spacingM,
+                  left: AppSpacing.md,
+                  right: AppSpacing.md,
                 ),
               ),
             ),
-            const SizedBox(height: AppConstants.spacingXL),
+            const SizedBox(height: AppSpacing.xxl),
 
             // PAYMENT AMOUNT
             Text(
               'Nominal Pembayaran (Rp)',
               style: AppTypography.labelMedium,
             ),
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
             TextField(
               controller: _paymentController,
               keyboardType: TextInputType.number,
@@ -342,31 +343,31 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   color: AppColors.textSecondary,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   borderSide: const BorderSide(color: Color(0xFFE8E8E8)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   borderSide: const BorderSide(
                     color: Color(0xFF6366F1),
                     width: 2,
                   ),
                 ),
                 contentPadding: const EdgeInsets.symmetric(
-                  horizontal: AppConstants.spacingM,
-                  vertical: AppConstants.spacingM,
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.md,
                 ),
               ),
               style: AppTypography.bodyMedium,
             ),
-            const SizedBox(height: AppConstants.spacingXL),
+            const SizedBox(height: AppSpacing.xxl),
 
             // NOTE
             Text(
               'Catatan (Opsional)',
               style: AppTypography.labelMedium,
             ),
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
             TextField(
               controller: _noteController,
               maxLines: 3,
@@ -376,33 +377,33 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   color: AppColors.textSecondary,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   borderSide: const BorderSide(color: Color(0xFFE8E8E8)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   borderSide: const BorderSide(
                     color: Color(0xFF6366F1),
                     width: 2,
                   ),
                 ),
                 contentPadding: const EdgeInsets.symmetric(
-                  horizontal: AppConstants.spacingM,
-                  vertical: AppConstants.spacingM,
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.md,
                 ),
               ),
               style: AppTypography.bodyMedium,
             ),
-            const SizedBox(height: AppConstants.spacingXL),
+            const SizedBox(height: AppSpacing.xxl),
 
             // SUMMARY
             if (_paymentAmount > 0) ...[
               Container(
-                padding: const EdgeInsets.all(AppConstants.spacingL),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   color: AppColors.background,
                   border: Border.all(color: const Color(0xFFE8E8E8)),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -416,7 +417,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                             color: AppColors.textSecondary,
                           ),
                         ),
-                        const SizedBox(height: AppConstants.spacingS),
+                        const SizedBox(height: AppSpacing.sm),
                         Text(
                           'Rp ${_paymentAmount.toStringAsFixed(0).replaceAll(RegExp(r'\B(?=(\d{3})+(?!\d))'), '.')}',
                           style: AppTypography.headingSmall.copyWith(
@@ -427,10 +428,10 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                       ],
                     ),
                     Container(
-                      padding: const EdgeInsets.all(AppConstants.spacingM),
+                      padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
                         color: AppColors.income.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                        borderRadius: BorderRadius.circular(AppRadius.lg),
                       ),
                       child: Icon(
                         Icons.arrow_forward_rounded,
@@ -440,7 +441,7 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
             ],
 
             // SUBMIT BUTTON
@@ -452,10 +453,10 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
                   backgroundColor: AppColors.income,
                   disabledBackgroundColor: AppColors.income.withOpacity(0.5),
                   padding: const EdgeInsets.symmetric(
-                    vertical: AppConstants.spacingM,
+                    vertical: AppSpacing.md,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                   ),
                 ),
                 child: _isProcessing
@@ -482,3 +483,5 @@ class _PayDebtScreenState extends State<PayDebtScreen> {
     );
   }
 }
+
+

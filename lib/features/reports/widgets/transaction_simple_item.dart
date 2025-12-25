@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/models/transaction.dart';
 import '../../../data/models/category.dart';
@@ -29,11 +30,11 @@ class TransactionSimpleItem extends StatelessWidget {
         _showDetailBottomSheet(context);
       },
       child: Container(
-        margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-        padding: const EdgeInsets.all(AppConstants.spacingM),
+        margin: const EdgeInsets.only(bottom: AppSpacing.md),
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: AppColors.cardBackground,
-          borderRadius: BorderRadius.circular(AppConstants.radiusL),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
           border: Border.all(color: AppColors.border, width: 1),
         ),
         child: Row(
@@ -44,7 +45,7 @@ class TransactionSimpleItem extends StatelessWidget {
               height: 48,
               decoration: BoxDecoration(
                 color: category.color.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                borderRadius: BorderRadius.circular(AppRadius.md),
                 border: Border.all(
                   color: category.color.withOpacity(0.3),
                 ),
@@ -56,7 +57,7 @@ class TransactionSimpleItem extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: AppConstants.spacingM),
+            const SizedBox(width: AppSpacing.md),
 
             // Main info
             Expanded(
@@ -79,14 +80,14 @@ class TransactionSimpleItem extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(width: AppConstants.spacingS),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         '•',
                         style: AppTypography.labelSmall.copyWith(
                           color: AppColors.textSecondary,
                         ),
                       ),
-                      const SizedBox(width: AppConstants.spacingS),
+                      const SizedBox(width: AppSpacing.sm),
                       Text(
                         dateFormatter.format(transaction.createdAt),
                         style: AppTypography.labelSmall.copyWith(
@@ -134,8 +135,8 @@ class TransactionSimpleItem extends StatelessWidget {
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(AppConstants.radiusXL),
-              topRight: Radius.circular(AppConstants.radiusXL),
+              topLeft: Radius.circular(AppRadius.xl),
+              topRight: Radius.circular(AppRadius.xl),
             ),
           ),
           child: DraggableScrollableSheet(
@@ -151,7 +152,7 @@ class TransactionSimpleItem extends StatelessWidget {
                   children: [
                     // Header
                     Padding(
-                      padding: const EdgeInsets.all(AppConstants.spacingL),
+                      padding: const EdgeInsets.all(AppSpacing.lg),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -176,7 +177,7 @@ class TransactionSimpleItem extends StatelessWidget {
                     ),
                     // Detail content
                     Padding(
-                      padding: const EdgeInsets.all(AppConstants.spacingL),
+                      padding: const EdgeInsets.all(AppSpacing.lg),
                       child: TransactionDetailItem(
                         transaction: transaction,
                         memberName: memberName,
@@ -192,3 +193,5 @@ class TransactionSimpleItem extends StatelessWidget {
     );
   }
 }
+
+

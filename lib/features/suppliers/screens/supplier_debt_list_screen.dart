@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/category.dart';
 import 'supplier_debt_detail_screen.dart';
@@ -52,7 +53,7 @@ class _SupplierDebtListScreenState extends State<SupplierDebtListScreen> {
                     size: 80,
                     color: AppColors.border,
                   ),
-                  const SizedBox(height: AppConstants.spacingL),
+                  const SizedBox(height: AppSpacing.lg),
                   Text(
                     'Belum ada hutang ke supplier',
                     style: AppTypography.bodyLarge.copyWith(
@@ -85,7 +86,7 @@ class _SupplierDebtListScreenState extends State<SupplierDebtListScreen> {
             });
 
           return ListView.builder(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             itemCount: sortedSuppliers.length,
             itemBuilder: (context, index) {
               final supplierEntry = sortedSuppliers[index];
@@ -119,13 +120,13 @@ class _SupplierDebtListScreenState extends State<SupplierDebtListScreen> {
                   );
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-                  padding: const EdgeInsets.all(AppConstants.spacingL),
+                  margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                  padding: const EdgeInsets.all(AppSpacing.lg),
                   decoration: BoxDecoration(
                     gradient: isFullyPaid
                         ? AppColors.incomeGradient
                         : AppColors.expenseGradient,
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                     boxShadow: [
                       BoxShadow(
                         color: (isFullyPaid
@@ -168,13 +169,13 @@ class _SupplierDebtListScreenState extends State<SupplierDebtListScreen> {
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: AppConstants.spacingM,
-                              vertical: AppConstants.spacingS,
+                              horizontal: AppSpacing.md,
+                              vertical: AppSpacing.sm,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.2),
                               borderRadius:
-                                  BorderRadius.circular(AppConstants.radiusM),
+                                  BorderRadius.circular(AppRadius.md),
                             ),
                             child: Text(
                               isFullyPaid ? '✓ Lunas' : '⊙ Sisa',
@@ -186,7 +187,7 @@ class _SupplierDebtListScreenState extends State<SupplierDebtListScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: AppConstants.spacingM),
+                      const SizedBox(height: AppSpacing.md),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -240,3 +241,5 @@ class _SupplierDebtListScreenState extends State<SupplierDebtListScreen> {
     );
   }
 }
+
+

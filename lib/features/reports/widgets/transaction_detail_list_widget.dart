@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'dart:html' as html;
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/providers/member_provider.dart';
@@ -153,7 +154,7 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
             builder: (context, memberProvider, _) {
               final memberNames = memberProvider.members.map((m) => m.name).toList();
               return Padding(
-                padding: const EdgeInsets.all(AppConstants.spacingL),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 child: TransactionListFilter(
                   members: memberNames,
                   onFilterChanged: (filter) {
@@ -177,20 +178,20 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
               return Center(
                 child: Column(
                   children: [
-                    const SizedBox(height: AppConstants.spacingXL),
+                    const SizedBox(height: AppSpacing.xxl),
                     Icon(
                       Icons.receipt_long_rounded,
                       size: 56,
                       color: AppColors.textSecondary.withOpacity(0.3),
                     ),
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
                     Text(
                       'Tidak ada transaksi',
                       style: AppTypography.labelMedium.copyWith(
                         color: AppColors.textSecondary,
                       ),
                     ),
-                    const SizedBox(height: AppConstants.spacingXL),
+                    const SizedBox(height: AppSpacing.xxl),
                   ],
                 ),
               );
@@ -229,12 +230,12 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 
                 // Enhanced Summary stats (3 cards)
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   child: Row(
                     children: [
                       _buildDetailStatsCard(
@@ -243,24 +244,24 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
                         countIncome,
                         const Color(0xFF10B981),
                       ),
-                      const SizedBox(width: AppConstants.spacingM),
+                      const SizedBox(width: AppSpacing.md),
                       _buildDetailStatsCard(
                         'Pengeluaran',
                         totalExpense,
                         countExpense,
                         const Color(0xFFEF5350),
                       ),
-                      const SizedBox(width: AppConstants.spacingM),
+                      const SizedBox(width: AppSpacing.md),
                       _buildBalanceCard(netBalance),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
 
                 // Transaction count
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -274,12 +275,12 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
                         onTap: () => _exportToCSV(filteredTransactions, memberProvider),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.spacingM,
-                            vertical: AppConstants.spacingS,
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.sm,
                           ),
                           decoration: BoxDecoration(
                             color: const Color(0xFF6366F1).withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                            borderRadius: BorderRadius.circular(AppRadius.md),
                             border: Border.all(
                               color: const Color(0xFF6366F1).withOpacity(0.3),
                             ),
@@ -307,11 +308,11 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
                   ),
                 ),
 
-                const SizedBox(height: AppConstants.spacingM),
+                const SizedBox(height: AppSpacing.md),
 
                 // Transaction list grouped by date
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: groupedByDate.entries.map((entry) {
@@ -320,7 +321,7 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
                   ),
                 ),
 
-                const SizedBox(height: AppConstants.spacingXL),
+                const SizedBox(height: AppSpacing.xxl),
               ],
             );
           },
@@ -337,8 +338,8 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
 
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppConstants.spacingL,
-        vertical: AppConstants.spacingM,
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.md,
       ),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
@@ -372,12 +373,12 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
           GestureDetector(
             onTap: () => setState(() => _filterExpanded = !_filterExpanded),
             child: Container(
-              padding: const EdgeInsets.all(AppConstants.spacingS),
+              padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: filterActive
                     ? const Color(0xFF6366F1).withOpacity(0.1)
                     : AppColors.background,
-                borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                borderRadius: BorderRadius.circular(AppRadius.md),
                 border: Border.all(
                   color: filterActive
                       ? const Color(0xFF6366F1).withOpacity(0.3)
@@ -398,10 +399,10 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
 
   Widget _buildSummaryCard(String label, double amount, Color color) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Column(
@@ -434,10 +435,10 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
   ) {
     return Container(
       width: 160,
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+        borderRadius: BorderRadius.circular(AppRadius.md),
         border: Border.all(
           color: color.withOpacity(0.3),
           width: 1,
@@ -479,10 +480,10 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
     
     return Container(
       width: 160,
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+        borderRadius: BorderRadius.circular(AppRadius.md),
         border: Border.all(
           color: color.withOpacity(0.3),
           width: 1,
@@ -569,7 +570,7 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: AppConstants.spacingS),
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
             child: Text(
               dateFormat,
               style: AppTypography.labelSmall.copyWith(
@@ -585,7 +586,7 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
               memberName: member?.name ?? 'Unknown',
             );
           }).toList(),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
         ],
       );
     } catch (e) {
@@ -648,3 +649,5 @@ class _TransactionDetailListWidgetState extends State<TransactionDetailListWidge
     }
   }
 }
+
+

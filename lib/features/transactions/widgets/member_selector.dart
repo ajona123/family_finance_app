@@ -4,7 +4,8 @@ import '../../../data/models/category.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/providers/member_provider.dart';
 import '../../../data/models/member.dart';
@@ -72,7 +73,7 @@ class _MemberSelectorState extends State<MemberSelector>
               child: Padding(
                 key: ValueKey(member.id),
                 padding: EdgeInsets.only(
-                  right: index == members.length - 1 ? 0 : AppConstants.spacingM,
+                  right: index == members.length - 1 ? 0 : AppSpacing.md,
                 ),
                 child: _MemberItem(
                   key: ValueKey('member_${member.id}'),
@@ -139,7 +140,7 @@ class _MemberItemState extends State<_MemberItem> {
             color: widget.isSelected
                 ? null
                 : AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             border: widget.isSelected
                 ? null
                 : Border.all(
@@ -207,3 +208,4 @@ class _MemberItemState extends State<_MemberItem> {
     );
   }
 }
+

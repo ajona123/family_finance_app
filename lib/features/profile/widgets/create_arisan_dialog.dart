@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/models/arisan.dart';
 import '../../../data/providers/arisan_provider.dart';
@@ -107,11 +108,11 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
       ),
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,7 +124,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // NAMA ARISAN
               Text(
@@ -132,18 +133,18 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
                   hintText: 'Contoh: Arisan Keluarga',
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   errorText: _nameError,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // JUMLAH SETORAN
               Text(
@@ -152,14 +153,14 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               TextField(
                 controller: _amountController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: 'Contoh: 300000',
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   errorText: _amountError,
                 ),
@@ -175,7 +176,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   }
                 },
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // TANGGAL MULAI
               Text(
@@ -184,7 +185,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               GestureDetector(
                 onTap: () async {
                   final pickedDate = await showDatePicker(
@@ -198,10 +199,10 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   }
                 },
                 child: Container(
-                  padding: const EdgeInsets.all(AppConstants.spacingM),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.border),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -215,7 +216,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   ),
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // DURASI SIKLUS
               Text(
@@ -224,18 +225,18 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               TextField(
                 controller: _cycleController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: 'Contoh: 3, 6, 12',
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // PESERTA
               Text(
@@ -246,7 +247,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
               ),
               if (_selectedOrganizerError != null)
                 Padding(
-                  padding: const EdgeInsets.only(top: AppConstants.spacingS),
+                  padding: const EdgeInsets.only(top: AppSpacing.sm),
                   child: Text(
                     _selectedOrganizerError!,
                     style: AppTypography.bodySmall.copyWith(
@@ -254,7 +255,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                     ),
                   ),
                 ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               Consumer<MemberProvider>(
                 builder: (context, memberProvider, _) {
                   final members = memberProvider.members;
@@ -265,7 +266,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                             ? AppColors.error
                             : AppColors.border,
                       ),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -276,8 +277,8 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                         final isSelected = _selectedParticipants.contains(member.id);
                         return Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.spacingM,
-                            vertical: AppConstants.spacingS,
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.sm,
                           ),
                           child: Row(
                             children: [
@@ -302,7 +303,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                   );
                 },
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
 
               // BUTTONS
               Row(
@@ -314,7 +315,7 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
                       child: const Text('Batal'),
                     ),
                   ),
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: _validateAndCreate,
@@ -330,3 +331,5 @@ class _CreateArisanDialogState extends State<CreateArisanDialog> {
     );
   }
 }
+
+

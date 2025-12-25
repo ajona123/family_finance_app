@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 
 class MemberReportCard extends StatelessWidget {
@@ -23,11 +24,11 @@ class MemberReportCard extends StatelessWidget {
     final percentageFromIncome = (expenseRatio * 100).toStringAsFixed(1);
 
     return Container(
-      margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
         boxShadow: [
           BoxShadow(
@@ -52,14 +53,14 @@ class MemberReportCard extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: AppConstants.spacingM,
-                  vertical: AppConstants.spacingS,
+                  horizontal: AppSpacing.md,
+                  vertical: AppSpacing.sm,
                 ),
                 decoration: BoxDecoration(
                   color: balance >= 0
                       ? AppColors.income.withOpacity(0.1)
                       : AppColors.expense.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                 ),
                 child: Text(
                   balance >= 0 ? 'Surplus' : 'Deficit',
@@ -72,15 +73,15 @@ class MemberReportCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Stats Grid
           GridView.count(
             crossAxisCount: 3,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: AppConstants.spacingM,
-            crossAxisSpacing: AppConstants.spacingM,
+            mainAxisSpacing: AppSpacing.md,
+            crossAxisSpacing: AppSpacing.md,
             childAspectRatio: 1.2,
             children: [
               // Income Card
@@ -109,14 +110,14 @@ class MemberReportCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
 
           // Expense Ratio
           Container(
-            padding: const EdgeInsets.all(AppConstants.spacingM),
+            padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: AppColors.cardBackground,
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
               border: Border.all(color: AppColors.border, width: 0.5),
             ),
             child: Column(
@@ -179,10 +180,10 @@ class _StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+        borderRadius: BorderRadius.circular(AppRadius.md),
         border: Border.all(color: color.withOpacity(0.3), width: 1),
       ),
       child: Column(
@@ -216,3 +217,5 @@ class _StatCard extends StatelessWidget {
     );
   }
 }
+
+

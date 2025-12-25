@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/default_customers.dart';
 import '../../../core/utils/haptic_feedback.dart';
@@ -414,10 +415,10 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                               children: [
                                 if (activeArisans.isEmpty)
                                   Container(
-                                    padding: const EdgeInsets.all(AppConstants.spacingL),
+                                    padding: const EdgeInsets.all(AppSpacing.lg),
                                     decoration: BoxDecoration(
                                       color: AppColors.cardBackground,
-                                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                                      borderRadius: BorderRadius.circular(AppRadius.md),
                                       border: Border.all(color: AppColors.border),
                                     ),
                                     child: Column(
@@ -444,7 +445,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                       Container(
                                         decoration: BoxDecoration(
                                           border: Border.all(color: const Color(0xFFE8E8E8)),
-                                          borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                                          borderRadius: BorderRadius.circular(AppRadius.lg),
                                         ),
                                         child: DropdownButton<String>(
                                           value: _selectedArisanId,
@@ -461,8 +462,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                               value: arisan.id,
                                               child: Padding(
                                                 padding: const EdgeInsets.symmetric(
-                                                  horizontal: AppConstants.spacingM,
-                                                  vertical: AppConstants.spacingS,
+                                                  horizontal: AppSpacing.md,
+                                                  vertical: AppSpacing.sm,
                                                 ),
                                                 child: Text(
                                                   arisan.name,
@@ -480,8 +481,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                             }
                                           },
                                           padding: const EdgeInsets.only(
-                                            left: AppConstants.spacingM,
-                                            right: AppConstants.spacingM,
+                                            left: AppSpacing.md,
+                                            right: AppSpacing.md,
                                           ),
                                         ),
                                       ),
@@ -506,10 +507,10 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                             }
                                           },
                                           child: Container(
-                                            padding: const EdgeInsets.all(AppConstants.spacingM),
+                                            padding: const EdgeInsets.all(AppSpacing.md),
                                             decoration: BoxDecoration(
                                               border: Border.all(color: const Color(0xFFE8E8E8)),
-                                              borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                                              borderRadius: BorderRadius.circular(AppRadius.lg),
                                             ),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -538,7 +539,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                         Container(
                                           decoration: BoxDecoration(
                                             border: Border.all(color: const Color(0xFFE8E8E8)),
-                                            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                                            borderRadius: BorderRadius.circular(AppRadius.lg),
                                           ),
                                           child: DropdownButton<int>(
                                             value: _arisanDurationMonths,
@@ -549,8 +550,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                                 value: month,
                                                 child: Padding(
                                                   padding: const EdgeInsets.symmetric(
-                                                    horizontal: AppConstants.spacingM,
-                                                    vertical: AppConstants.spacingS,
+                                                    horizontal: AppSpacing.md,
+                                                    vertical: AppSpacing.sm,
                                                   ),
                                                   child: Text(
                                                     month == 1 ? '1 bulan' : '$month bulan',
@@ -565,18 +566,18 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                               }
                                             },
                                             padding: const EdgeInsets.only(
-                                              left: AppConstants.spacingM,
-                                              right: AppConstants.spacingM,
+                                              left: AppSpacing.md,
+                                              right: AppSpacing.md,
                                             ),
                                           ),
                                         ),
                                         SizedBox(height: AppSpacing.lg),
                                         // INFO: Calculated total
                                         Container(
-                                          padding: const EdgeInsets.all(AppConstants.spacingL),
+                                          padding: const EdgeInsets.all(AppSpacing.lg),
                                           decoration: BoxDecoration(
                                             color: AppColors.primary.withOpacity(0.1),
-                                            borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                                            borderRadius: BorderRadius.circular(AppRadius.md),
                                             border: Border.all(
                                               color: AppColors.primary.withOpacity(0.3),
                                             ),
@@ -590,7 +591,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                                   color: AppColors.textSecondary,
                                                 ),
                                               ),
-                                              const SizedBox(height: AppConstants.spacingS),
+                                              const SizedBox(height: AppSpacing.sm),
                                               Builder(
                                                 builder: (context) {
                                                   final daysInCycle = _arisanDurationMonths * 30;
@@ -605,7 +606,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                                   );
                                                 },
                                               ),
-                                              const SizedBox(height: AppConstants.spacingS),
+                                              const SizedBox(height: AppSpacing.sm),
                                               Text(
                                                 '$_arisanDurationMonths bulan × 30 hari = ${_arisanDurationMonths * 30} pembayaran',
                                                 style: AppTypography.bodySmall.copyWith(
@@ -635,7 +636,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: const Color(0xFFE8E8E8)),
-                            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                            borderRadius: BorderRadius.circular(AppRadius.lg),
                           ),
                           child: DropdownButton<String>(
                             value: _customerName.isEmpty ? null : _customerName,
@@ -652,8 +653,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                 value: name,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: AppConstants.spacingM,
-                                    vertical: AppConstants.spacingS,
+                                    horizontal: AppSpacing.md,
+                                    vertical: AppSpacing.sm,
                                   ),
                                   child: Text(
                                     name,
@@ -668,8 +669,8 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                               }
                             },
                             padding: const EdgeInsets.only(
-                              left: AppConstants.spacingM,
-                              right: AppConstants.spacingM,
+                              left: AppSpacing.md,
+                              right: AppSpacing.md,
                             ),
                           ),
                         ),
@@ -740,7 +741,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             hintText: '0',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(
-                                AppConstants.radiusL,
+                                AppRadius.lg,
                               ),
                             ),
                           ),
@@ -763,7 +764,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             hintText: 'Tambahkan catatan...',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(
-                                AppConstants.radiusL,
+                                AppRadius.lg,
                               ),
                             ),
                           ),
@@ -883,11 +884,11 @@ class _SuccessDialogState extends State<_SuccessDialog>
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Container(
-          margin: const EdgeInsets.all(AppConstants.spacingXL),
-          padding: const EdgeInsets.all(AppConstants.spacingXL),
+          margin: const EdgeInsets.all(AppSpacing.xxl),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.2),
@@ -925,7 +926,7 @@ class _SuccessDialogState extends State<_SuccessDialog>
                 textAlign: TextAlign.center,
               ),
 
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
 
               Text(
                 'Data keuangan Anda telah tersimpan',
@@ -961,13 +962,13 @@ class _PaymentStatusTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(AppConstants.spacingM),
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.border,
             width: isSelected ? 2 : 1,
           ),
-          borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          borderRadius: BorderRadius.circular(AppRadius.md),
           color:
               isSelected ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
         ),
@@ -992,7 +993,7 @@ class _PaymentStatusTile extends StatelessWidget {
                     )
                   : null,
             ),
-            const SizedBox(width: AppConstants.spacingM),
+            const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1018,3 +1019,5 @@ class _PaymentStatusTile extends StatelessWidget {
     );
   }
 }
+
+

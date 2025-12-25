@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/providers/member_provider.dart';
@@ -46,10 +47,10 @@ class MemberSpendingBreakdown extends StatelessWidget {
 
         if (sortedMembers.isEmpty) {
           return Container(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               color: AppColors.cardBackground,
-              borderRadius: BorderRadius.circular(AppConstants.radiusL),
+              borderRadius: BorderRadius.circular(AppRadius.lg),
             ),
             child: Center(
               child: Text(
@@ -69,10 +70,10 @@ class MemberSpendingBreakdown extends StatelessWidget {
         );
 
         return Container(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             border: Border.all(color: AppColors.border, width: 1),
           ),
           child: Column(
@@ -84,7 +85,7 @@ class MemberSpendingBreakdown extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
               ...sortedMembers.asMap().entries.map((entry) {
                 final index = entry.key;
                 final memberName = entry.value.key;
@@ -106,7 +107,7 @@ class MemberSpendingBreakdown extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.only(
                     bottom: index < sortedMembers.length - 1
-                        ? AppConstants.spacingM
+                        ? AppSpacing.md
                         : 0,
                   ),
                   child: Column(
@@ -173,3 +174,5 @@ class MemberSpendingBreakdown extends StatelessWidget {
     );
   }
 }
+
+

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/transaction.dart';
 import '../../../data/models/category.dart';
@@ -77,17 +78,17 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
               unpaidTxns.fold(0, (sum, t) => sum + (t.remainingAmount ?? 0));
 
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // DEBT SUMMARY
                 if (totalDebt > 0) ...[
                   Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingL),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       gradient: AppColors.expenseGradient,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.expense.withOpacity(0.3),
@@ -106,7 +107,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(
-                                    AppConstants.radiusM),
+                                    AppRadius.md),
                               ),
                               child: const Icon(
                                 Icons.warning_rounded,
@@ -114,7 +115,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                                 size: 24,
                               ),
                             ),
-                            const SizedBox(width: AppConstants.spacingM),
+                            const SizedBox(width: AppSpacing.md),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -136,7 +137,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: AppConstants.spacingL),
+                        const SizedBox(height: AppSpacing.lg),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton.icon(
@@ -157,7 +158,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF10B981),
                               padding: const EdgeInsets.symmetric(
-                                vertical: AppConstants.spacingM,
+                                vertical: AppSpacing.md,
                               ),
                             ),
                           ),
@@ -165,13 +166,13 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingXL),
+                  const SizedBox(height: AppSpacing.xxl),
                 ] else ...[
                   Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingL),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       gradient: AppColors.incomeGradient,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
                     ),
                     child: Row(
                       children: [
@@ -180,7 +181,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                           decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.2),
                             borderRadius:
-                                BorderRadius.circular(AppConstants.radiusM),
+                                BorderRadius.circular(AppRadius.md),
                           ),
                           child: const Icon(
                             Icons.check_circle_rounded,
@@ -188,7 +189,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                             size: 24,
                           ),
                         ),
-                        const SizedBox(width: AppConstants.spacingM),
+                        const SizedBox(width: AppSpacing.md),
                         Text(
                           'Semua transaksi sudah lunas ✓',
                           style: AppTypography.labelMedium.copyWith(
@@ -198,7 +199,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingXL),
+                  const SizedBox(height: AppSpacing.xxl),
                 ],
 
                 // UNPAID TRANSACTIONS
@@ -209,9 +210,9 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
                   ...unpaidTxns.map((txn) => _buildTransactionCard(txn, true)),
-                  const SizedBox(height: AppConstants.spacingXL),
+                  const SizedBox(height: AppSpacing.xxl),
                 ],
 
                 // PAYMENT RECORDS - Always show if not empty
@@ -223,9 +224,9 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
                   ...paymentRecords.map((txn) => _buildPaymentRecordCard(txn)),
-                  const SizedBox(height: AppConstants.spacingXL),
+                  const SizedBox(height: AppSpacing.xxl),
                 ],
 
                 // PAID TRANSACTIONS
@@ -237,7 +238,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
                   ...paidTxns.map((txn) => _buildTransactionCard(txn, false)),
                 ],
 
@@ -245,7 +246,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: AppConstants.spacingXL,
+                        vertical: AppSpacing.xxl,
                       ),
                       child: Text(
                         'Belum ada transaksi',
@@ -286,15 +287,15 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
             }
           : null,
       child: Container(
-        margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-        padding: const EdgeInsets.all(AppConstants.spacingM),
+        margin: const EdgeInsets.only(bottom: AppSpacing.md),
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
             color: statusColor.withOpacity(0.3),
             width: 2,
           ),
-          borderRadius: BorderRadius.circular(AppConstants.radiusL),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -309,7 +310,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                         category.emoji,
                         style: const TextStyle(fontSize: 24),
                       ),
-                      const SizedBox(width: AppConstants.spacingM),
+                      const SizedBox(width: AppSpacing.md),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -356,7 +357,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: AppConstants.spacingS),
+            const SizedBox(height: AppSpacing.sm),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -368,7 +369,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingS,
+                    horizontal: AppSpacing.sm,
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
@@ -398,7 +399,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
             ),
             if (isUnpaid)
               Padding(
-                padding: const EdgeInsets.only(top: AppConstants.spacingS),
+                padding: const EdgeInsets.only(top: AppSpacing.sm),
                 child: Text(
                   '👆 Tap untuk catat pembayaran',
                   style: AppTypography.caption.copyWith(
@@ -426,11 +427,11 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
     final paymentNumber = paymentIndex >= 0 ? paymentIndex + 1 : 0;
     
     return Container(
-      margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(
           color: const Color(0xFF10B981).withOpacity(0.3),
         ),
@@ -453,7 +454,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
                   size: 24,
                 ),
               ),
-              const SizedBox(width: AppConstants.spacingM),
+              const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Text(
                   'Pembayaran ke-$paymentNumber ke ${record.supplierId}',
@@ -471,7 +472,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
               ),
             ],
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             _formatDate(record.createdAt),
             style: AppTypography.caption.copyWith(
@@ -479,7 +480,7 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
             ),
           ),
           if (record.note != null && record.note!.isNotEmpty) ...[
-            const SizedBox(height: AppConstants.spacingS),
+            const SizedBox(height: AppSpacing.sm),
             Text(
               'Catatan: ${record.note}',
               style: AppTypography.caption.copyWith(
@@ -511,3 +512,5 @@ class _SupplierDebtDetailScreenState extends State<SupplierDebtDetailScreen> {
     return '${date.day} ${months[date.month - 1]} ${date.year} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
   }
 }
+
+

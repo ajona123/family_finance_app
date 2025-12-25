@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/category.dart';
@@ -40,10 +41,10 @@ class IncomeBreakdown extends StatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         boxShadow: [
           BoxShadow(
             color: AppColors.shadowLight,
@@ -78,7 +79,7 @@ class IncomeBreakdown extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
 
           // CATEGORY LIST
           ...categoriesWithIncome.map((entry) {
@@ -90,7 +91,7 @@ class IncomeBreakdown extends StatelessWidget {
             final percentage = (amount / totalIncome * 100).toStringAsFixed(1);
 
             return Padding(
-              padding: const EdgeInsets.only(bottom: AppConstants.spacingM),
+              padding: const EdgeInsets.only(bottom: AppSpacing.md),
               child: Row(
                 children: [
                   Container(
@@ -107,7 +108,7 @@ class IncomeBreakdown extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +122,7 @@ class IncomeBreakdown extends StatelessWidget {
                         const SizedBox(height: 4),
                         ClipRRect(
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusM),
+                              BorderRadius.circular(AppRadius.md),
                           child: LinearProgressIndicator(
                             value: amount / totalIncome,
                             minHeight: 6,
@@ -134,7 +135,7 @@ class IncomeBreakdown extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -159,14 +160,14 @@ class IncomeBreakdown extends StatelessWidget {
             );
           }).toList(),
 
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
 
           // TOTAL
           Container(
-            padding: const EdgeInsets.all(AppConstants.spacingM),
+            padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: AppColors.income.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
               border: Border.all(
                 color: AppColors.income.withOpacity(0.3),
               ),
@@ -200,10 +201,10 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         boxShadow: [
           BoxShadow(
             color: AppColors.shadowLight,
@@ -236,7 +237,7 @@ class _EmptyState extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
           Center(
             child: Text(
               'Belum ada pemasukan',
@@ -250,3 +251,5 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+
+

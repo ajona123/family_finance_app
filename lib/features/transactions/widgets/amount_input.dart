@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../data/models/category.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/haptic_feedback.dart';
@@ -103,7 +104,7 @@ class _AmountInputState extends State<AmountInput>
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
             border: Border.all(color: AppColors.border, width: 1.5),
             boxShadow: [
               BoxShadow(
@@ -117,7 +118,7 @@ class _AmountInputState extends State<AmountInput>
             children: [
               // DISPLAY
               Container(
-                padding: const EdgeInsets.all(AppConstants.spacingL),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -126,8 +127,8 @@ class _AmountInputState extends State<AmountInput>
                     ],
                   ),
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(AppConstants.radiusXL),
-                    topRight: Radius.circular(AppConstants.radiusXL),
+                    topLeft: Radius.circular(AppRadius.xl),
+                    topRight: Radius.circular(AppRadius.xl),
                   ),
                 ),
                 child: Column(
@@ -162,7 +163,7 @@ class _AmountInputState extends State<AmountInput>
 
               // KEYBOARD
               Padding(
-                padding: const EdgeInsets.all(AppConstants.spacingM),
+                padding: const EdgeInsets.all(AppSpacing.md),
                 child: Column(
                   children: [
                     // ROW 1
@@ -173,7 +174,7 @@ class _AmountInputState extends State<AmountInput>
                         _KeyButton(label: '3', onPressed: _onNumberPressed),
                       ],
                     ),
-                    const SizedBox(height: AppConstants.spacingS),
+                    const SizedBox(height: AppSpacing.sm),
 
                     // ROW 2
                     Row(
@@ -183,7 +184,7 @@ class _AmountInputState extends State<AmountInput>
                         _KeyButton(label: '6', onPressed: _onNumberPressed),
                       ],
                     ),
-                    const SizedBox(height: AppConstants.spacingS),
+                    const SizedBox(height: AppSpacing.sm),
 
                     // ROW 3
                     Row(
@@ -193,7 +194,7 @@ class _AmountInputState extends State<AmountInput>
                         _KeyButton(label: '9', onPressed: _onNumberPressed),
                       ],
                     ),
-                    const SizedBox(height: AppConstants.spacingS),
+                    const SizedBox(height: AppSpacing.sm),
 
                     // ROW 4
                     Row(
@@ -260,7 +261,7 @@ class _KeyButtonState extends State<_KeyButton> {
                   : (widget.isSpecial
                   ? AppColors.error.withOpacity(0.1)
                   : AppColors.background),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
               border: Border.all(
                 color: _isPressed
                     ? AppColors.primary
@@ -293,3 +294,4 @@ class _KeyButtonState extends State<_KeyButton> {
     );
   }
 }
+

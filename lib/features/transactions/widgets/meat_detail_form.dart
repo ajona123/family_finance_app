@@ -3,7 +3,8 @@ import '../../../data/models/category.dart';
 import 'package:flutter/services.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/haptic_feedback.dart';
@@ -74,19 +75,19 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
       context: context,
       builder: (context) => Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+          borderRadius: BorderRadius.circular(AppRadius.xl),
         ),
         child: Container(
-          padding: const EdgeInsets.all(AppConstants.spacingXL),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               // HEADER
               Container(
-                padding: const EdgeInsets.all(AppConstants.spacingM),
+                padding: const EdgeInsets.all(AppSpacing.md),
                 decoration: BoxDecoration(
                   gradient: AppColors.primaryGradient,
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -106,12 +107,12 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                   ],
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
 
               // SUPPLIER BUTTONS
               ...suppliers.map((supplier) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: AppConstants.spacingM),
+                  padding: const EdgeInsets.only(bottom: AppSpacing.md),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
@@ -119,12 +120,12 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: AppConstants.spacingL,
-                        vertical: AppConstants.spacingM,
+                        horizontal: AppSpacing.lg,
+                        vertical: AppSpacing.md,
                       ),
                       decoration: BoxDecoration(
                         gradient: AppColors.primaryGradient,
-                        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                        borderRadius: BorderRadius.circular(AppRadius.lg),
                         boxShadow: [
                           BoxShadow(
                             color: AppColors.primary.withOpacity(0.3),
@@ -147,7 +148,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                               size: 20,
                             ),
                           ),
-                          const SizedBox(width: AppConstants.spacingM),
+                          const SizedBox(width: AppSpacing.md),
                           Expanded(
                             child: Text(
                               supplier,
@@ -169,7 +170,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                 );
               }),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // CANCEL BUTTON
               OutlinedButton(
@@ -180,11 +181,11 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                     width: 2,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                   ),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingXL,
-                    vertical: AppConstants.spacingM,
+                    horizontal: AppSpacing.xxl,
+                    vertical: AppSpacing.md,
                   ),
                 ),
                 child: Text(
@@ -225,7 +226,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
 
           return Padding(
             key: ValueKey('meat_${item.id}'),
-            padding: const EdgeInsets.only(bottom: AppConstants.spacingM),
+            padding: const EdgeInsets.only(bottom: AppSpacing.md),
             child: _MeatItemCard(
               key: ValueKey(item.id),
               item: item,
@@ -257,9 +258,9 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
 
         // PAYMENT STATUS (for meat items)
         if (widget.meatItems.isNotEmpty) ...[
-          const SizedBox(height: AppConstants.spacingXL),
+          const SizedBox(height: AppSpacing.xxl),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -270,7 +271,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: AppConstants.spacingM),
+                const SizedBox(height: AppSpacing.md),
                 Row(
                   children: [
                     Expanded(
@@ -278,8 +279,8 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                         onTap: () => widget.onPaymentStatusChanged('lunas'),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.spacingM,
-                            vertical: AppConstants.spacingM,
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.md,
                           ),
                           decoration: BoxDecoration(
                             color: widget.paymentStatus == 'lunas'
@@ -291,7 +292,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                                   : const Color(0xFFE8E8E8),
                               width: 2,
                             ),
-                            borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                            borderRadius: BorderRadius.circular(AppRadius.md),
                           ),
                           child: Text(
                             'Lunas',
@@ -306,14 +307,14 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: AppConstants.spacingM),
+                    const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: GestureDetector(
                         onTap: () => widget.onPaymentStatusChanged('unpaid'),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.spacingM,
-                            vertical: AppConstants.spacingM,
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.md,
                           ),
                           decoration: BoxDecoration(
                             color: widget.paymentStatus == 'unpaid'
@@ -325,7 +326,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                                   : const Color(0xFFE8E8E8),
                               width: 2,
                             ),
-                            borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                            borderRadius: BorderRadius.circular(AppRadius.md),
                           ),
                           child: Text(
                             'Belum Lunas',
@@ -345,7 +346,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
 
                 // REMAINING AMOUNT (if unpaid)
                 if (widget.paymentStatus == 'unpaid') ...[
-                  const SizedBox(height: AppConstants.spacingL),
+                  const SizedBox(height: AppSpacing.lg),
                   Text(
                     'Sisa Pembayaran (Rp)',
                     style: AppTypography.bodySmall.copyWith(
@@ -353,7 +354,7 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
                   TextField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -362,19 +363,19 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
                         color: AppColors.textSecondary,
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                        borderRadius: BorderRadius.circular(AppRadius.md),
                         borderSide: const BorderSide(color: Color(0xFFE8E8E8)),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                        borderRadius: BorderRadius.circular(AppRadius.md),
                         borderSide: const BorderSide(
                           color: Color(0xFF6366F1),
                           width: 2,
                         ),
                       ),
                       contentPadding: const EdgeInsets.symmetric(
-                        horizontal: AppConstants.spacingM,
-                        vertical: AppConstants.spacingM,
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.md,
                       ),
                     ),
                     onChanged: (value) {
@@ -385,12 +386,12 @@ class _MeatDetailFormState extends State<MeatDetailForm> {
               ],
             ),
           ),
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
           Container(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               gradient: AppColors.primaryGradient.scale(0.1),
-              borderRadius: BorderRadius.circular(AppConstants.radiusL),
+              borderRadius: BorderRadius.circular(AppRadius.lg),
               border: Border.all(
                 color: AppColors.primary.withOpacity(0.3),
                 width: 2,
@@ -541,7 +542,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.cardBackground,
-          borderRadius: BorderRadius.circular(AppConstants.radiusL),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
           border: Border.all(color: AppColors.border, width: 1.5),
           boxShadow: [
             BoxShadow(
@@ -555,7 +556,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
           children: [
             // HEADER
             Container(
-              padding: const EdgeInsets.all(AppConstants.spacingM),
+              padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -564,8 +565,8 @@ class _MeatItemCardState extends State<_MeatItemCard>
                   ],
                 ),
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(AppConstants.radiusL),
-                  topRight: Radius.circular(AppConstants.radiusL),
+                  topLeft: Radius.circular(AppRadius.lg),
+                  topRight: Radius.circular(AppRadius.lg),
                 ),
               ),
               child: Row(
@@ -623,7 +624,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
 
             // CONTENT
             Padding(
-              padding: const EdgeInsets.all(AppConstants.spacingM),
+              padding: const EdgeInsets.all(AppSpacing.md),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -636,7 +637,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
                   Container(
                     decoration: BoxDecoration(
                       color: AppColors.background,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       border: Border.all(color: AppColors.border),
                     ),
                     child: DropdownButtonHideUnderline(
@@ -644,7 +645,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
                         value: widget.item.cutName,
                         isExpanded: true,
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                        borderRadius: BorderRadius.circular(AppRadius.md),
                         items: AppConstants.meatCuts.map((cut) {
                           return DropdownMenuItem(
                             value: cut,
@@ -659,7 +660,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
                     ),
                   ),
 
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
 
                   // WEIGHT & PRICE
                   Row(
@@ -693,7 +694,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(
-                                    AppConstants.radiusM,
+                                    AppRadius.md,
                                   ),
                                 ),
                               ),
@@ -703,7 +704,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
                         ),
                       ),
 
-                      const SizedBox(width: AppConstants.spacingM),
+                      const SizedBox(width: AppSpacing.md),
 
                       // PRICE PER KG
                       Expanded(
@@ -733,7 +734,7 @@ class _MeatItemCardState extends State<_MeatItemCard>
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(
-                                    AppConstants.radiusM,
+                                    AppRadius.md,
                                   ),
                                 ),
                               ),
@@ -745,14 +746,14 @@ class _MeatItemCardState extends State<_MeatItemCard>
                     ],
                   ),
 
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
 
                   // TOTAL
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: AppColors.income.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -789,3 +790,4 @@ class _MeatItemCardState extends State<_MeatItemCard>
     );
   }
 }
+

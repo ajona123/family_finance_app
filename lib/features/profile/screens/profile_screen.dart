@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../data/providers/member_provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
       body: Consumer<MemberProvider>(
         builder: (context, memberProvider, _) {
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -29,12 +30,12 @@ class ProfileScreen extends StatelessWidget {
                   'Anggota Aktif',
                   style: AppTypography.headingSmall,
                 ),
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 Container(
-                  padding: const EdgeInsets.all(AppConstants.spacingL),
+                  padding: const EdgeInsets.all(AppSpacing.lg),
                   decoration: BoxDecoration(
                     color: AppColors.cardBackground,
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                     border: Border.all(color: AppColors.border, width: 1),
                   ),
                   child: Column(
@@ -49,15 +50,15 @@ class ProfileScreen extends StatelessWidget {
                               margin: EdgeInsets.only(
                                 bottom: member == memberProvider.members.last
                                     ? 0
-                                    : AppConstants.spacingM,
+                                    : AppSpacing.md,
                               ),
-                              padding: const EdgeInsets.all(AppConstants.spacingM),
+                              padding: const EdgeInsets.all(AppSpacing.md),
                               decoration: BoxDecoration(
                                 color: isSelected
                                     ? AppColors.primary.withOpacity(0.1)
                                     : Colors.transparent,
                                 borderRadius: BorderRadius.circular(
-                                  AppConstants.radiusM,
+                                  AppRadius.md,
                                 ),
                                 border: Border.all(
                                   color: isSelected
@@ -97,35 +98,35 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: AppConstants.spacingXL),
+                const SizedBox(height: AppSpacing.xxl),
 
                 // App Info
                 Text(
                   'Tentang Aplikasi',
                   style: AppTypography.headingSmall,
                 ),
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 Container(
-                  padding: const EdgeInsets.all(AppConstants.spacingL),
+                  padding: const EdgeInsets.all(AppSpacing.lg),
                   decoration: BoxDecoration(
                     color: AppColors.cardBackground,
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                     border: Border.all(color: AppColors.border, width: 1),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _InfoRow(label: 'Aplikasi', value: 'Family Finance'),
-                      const SizedBox(height: AppConstants.spacingM),
+                      const SizedBox(height: AppSpacing.md),
                       _InfoRow(label: 'Versi', value: '1.0.0'),
-                      const SizedBox(height: AppConstants.spacingM),
+                      const SizedBox(height: AppSpacing.md),
                       _InfoRow(label: 'Deskripsi',
                           value: 'Aplikasi pencatat keuangan keluarga yang komprehensif'),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: AppConstants.spacingXL),
+                const SizedBox(height: AppSpacing.xxl),
 
                 // Action Buttons
                 SizedBox(
@@ -187,3 +188,5 @@ class _InfoRow extends StatelessWidget {
     );
   }
 }
+
+

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 
 class SearchFilterBar extends StatefulWidget {
   final ValueChanged<String> onSearchChanged;
@@ -37,7 +38,7 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       child: Row(
         children: [
           // Search field
@@ -45,7 +46,7 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.cardBackground,
-                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
                 border: Border.all(color: AppColors.border, width: 1),
               ),
               child: TextField(
@@ -58,8 +59,8 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
                   ),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingM,
-                    vertical: AppConstants.spacingM,
+                    horizontal: AppSpacing.md,
+                    vertical: AppSpacing.md,
                   ),
                   prefixIcon: Icon(
                     Icons.search_rounded,
@@ -82,18 +83,18 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
             ),
           ),
 
-          const SizedBox(width: AppConstants.spacingM),
+          const SizedBox(width: AppSpacing.md),
 
           // Filter button
           GestureDetector(
             onTap: widget.onFilterPressed,
             child: Container(
-              padding: const EdgeInsets.all(AppConstants.spacingM),
+              padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
                 color: widget.filterCount > 0
                     ? AppColors.primary.withOpacity(0.1)
                     : AppColors.cardBackground,
-                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
                 border: Border.all(
                   color: widget.filterCount > 0 ? AppColors.primary : AppColors.border,
                   width: widget.filterCount > 0 ? 1.5 : 1,
@@ -136,3 +137,5 @@ class _SearchFilterBarState extends State<SearchFilterBar> {
     );
   }
 }
+
+

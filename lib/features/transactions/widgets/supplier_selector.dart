@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/models/category.dart';
 
@@ -50,14 +51,14 @@ class _SupplierSelectorState extends State<SupplierSelector> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: AppConstants.spacingM),
+        const SizedBox(height: AppSpacing.md),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: AppConstants.spacingM,
-            crossAxisSpacing: AppConstants.spacingM,
+            mainAxisSpacing: AppSpacing.md,
+            crossAxisSpacing: AppSpacing.md,
             childAspectRatio: 2.5,
           ),
           itemCount: suppliers.length,
@@ -74,7 +75,7 @@ class _SupplierSelectorState extends State<SupplierSelector> {
                 duration: const Duration(milliseconds: 200),
                 decoration: BoxDecoration(
                   color: AppColors.cardBackground,
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   border: Border.all(
                     color: isSelected ? AppColors.primary : AppColors.border,
                     width: isSelected ? 2.5 : 1.5,
@@ -116,3 +117,5 @@ class _SupplierSelectorState extends State<SupplierSelector> {
     );
   }
 }
+
+

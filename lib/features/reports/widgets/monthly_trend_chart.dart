@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/transaction.dart';
@@ -79,10 +80,10 @@ class MonthlyTrendChart extends StatelessWidget {
         }
 
         return Container(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             border: Border.all(color: AppColors.border, width: 1),
           ),
           child: Column(
@@ -94,7 +95,7 @@ class MonthlyTrendChart extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Chart
               SizedBox(
@@ -113,7 +114,7 @@ class MonthlyTrendChart extends StatelessWidget {
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: AppConstants.spacingM,
+                          horizontal: AppSpacing.md,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -143,7 +144,7 @@ class MonthlyTrendChart extends StatelessWidget {
                               ],
                             ),
 
-                            const SizedBox(height: AppConstants.spacingM),
+                            const SizedBox(height: AppSpacing.md),
 
                             // Bars
                             SizedBox(
@@ -161,7 +162,7 @@ class MonthlyTrendChart extends StatelessWidget {
                                         color: AppColors.expense,
                                         borderRadius: BorderRadius.vertical(
                                           top: Radius.circular(
-                                            AppConstants.radiusM,
+                                            AppRadius.md,
                                           ),
                                         ),
                                       ),
@@ -177,7 +178,7 @@ class MonthlyTrendChart extends StatelessWidget {
                                           color: AppColors.income,
                                           borderRadius: BorderRadius.vertical(
                                             top: Radius.circular(
-                                              AppConstants.radiusM,
+                                              AppRadius.md,
                                             ),
                                           ),
                                         ),
@@ -187,7 +188,7 @@ class MonthlyTrendChart extends StatelessWidget {
                               ),
                             ),
 
-                            const SizedBox(height: AppConstants.spacingM),
+                            const SizedBox(height: AppSpacing.md),
 
                             // Month label
                             Text(
@@ -205,7 +206,7 @@ class MonthlyTrendChart extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Legend
               Row(
@@ -223,7 +224,7 @@ class MonthlyTrendChart extends StatelessWidget {
                     'Pemasukan',
                     style: AppTypography.caption,
                   ),
-                  const SizedBox(width: AppConstants.spacingL),
+                  const SizedBox(width: AppSpacing.lg),
                   Container(
                     width: 12,
                     height: 12,
@@ -246,3 +247,5 @@ class MonthlyTrendChart extends StatelessWidget {
     );
   }
 }
+
+

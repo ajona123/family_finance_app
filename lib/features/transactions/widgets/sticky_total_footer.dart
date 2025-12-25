@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../data/models/category.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/haptic_feedback.dart';
 
@@ -87,10 +88,10 @@ class _StickyTotalFooterState extends State<StickyTotalFooter>
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Container(
                 padding: EdgeInsets.only(
-                  left: AppConstants.spacingL,
-                  right: AppConstants.spacingL,
-                  top: AppConstants.spacingL,
-                  bottom: AppConstants.spacingL +
+                  left: AppSpacing.lg,
+                  right: AppSpacing.lg,
+                  top: AppSpacing.lg,
+                  bottom: AppSpacing.lg +
                       MediaQuery.of(context).padding.bottom,
                 ),
                 decoration: BoxDecoration(
@@ -143,7 +144,7 @@ class _StickyTotalFooterState extends State<StickyTotalFooter>
                       ),
                     ),
 
-                    const SizedBox(width: AppConstants.spacingL),
+                    const SizedBox(width: AppSpacing.lg),
 
                     // SAVE BUTTON
                     GestureDetector(
@@ -179,7 +180,7 @@ class _StickyTotalFooterState extends State<StickyTotalFooter>
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(
-                                AppConstants.radiusL,
+                                AppRadius.lg,
                               ),
                               boxShadow: widget.canSave && !_isPressed
                                   ? [
@@ -224,3 +225,4 @@ class _StickyTotalFooterState extends State<StickyTotalFooter>
     );
   }
 }
+

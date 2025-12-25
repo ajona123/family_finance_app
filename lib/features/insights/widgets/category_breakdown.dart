@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/category.dart';
@@ -31,10 +32,10 @@ class CategoryBreakdown extends StatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         boxShadow: [
           BoxShadow(
             color: AppColors.shadowLight,
@@ -69,7 +70,7 @@ class CategoryBreakdown extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
 
           // CATEGORY LIST
           ...categoriesWithExpense.map((entry) {
@@ -78,7 +79,7 @@ class CategoryBreakdown extends StatelessWidget {
             final percentage = (amount / totalExpense * 100).toStringAsFixed(1);
 
             return Padding(
-              padding: const EdgeInsets.only(bottom: AppConstants.spacingM),
+              padding: const EdgeInsets.only(bottom: AppSpacing.md),
               child: _CategoryItem(
                 category: category,
                 amount: amount,
@@ -192,10 +193,10 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingXL),
+      padding: const EdgeInsets.all(AppSpacing.xxl),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         border: Border.all(color: AppColors.border, width: 2),
       ),
       child: Column(
@@ -205,12 +206,12 @@ class _EmptyState extends StatelessWidget {
             size: 60,
             color: AppColors.textTertiary,
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
           Text(
             'Belum Ada Data',
             style: AppTypography.headingSmall,
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             'Mulai catat pengeluaran untuk melihat breakdown kategori',
             style: AppTypography.bodyMedium.copyWith(
@@ -223,3 +224,4 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+

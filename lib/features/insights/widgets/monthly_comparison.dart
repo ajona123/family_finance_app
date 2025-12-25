@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 
@@ -17,12 +18,12 @@ class MonthlyComparison extends StatelessWidget {
     final isPositive = changePercentage >= 0;
 
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         gradient: isPositive
             ? AppColors.incomeGradient
             : AppColors.expenseGradient,
-        borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         boxShadow: [
           BoxShadow(
             color: isPositive
@@ -65,7 +66,7 @@ class MonthlyComparison extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
 
           // CURRENT MONTH BALANCE
           Text(
@@ -92,14 +93,14 @@ class MonthlyComparison extends StatelessWidget {
             },
           ),
 
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
 
           // COMPARISON
           Container(
-            padding: const EdgeInsets.all(AppConstants.spacingM),
+            padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: Row(
               children: [
@@ -143,7 +144,7 @@ class MonthlyComparison extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // INFO TEXT
           Text(
@@ -159,3 +160,4 @@ class MonthlyComparison extends StatelessWidget {
     );
   }
 }
+

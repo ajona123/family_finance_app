@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/date_helper.dart';
 import '../../../data/providers/transaction_provider.dart';
@@ -51,8 +52,8 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
           // SORT DROPDOWN
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: AppConstants.spacingL,
-              vertical: AppConstants.spacingM,
+              horizontal: AppSpacing.lg,
+              vertical: AppSpacing.md,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,7 +178,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
                           size: 64,
                           color: AppColors.textTertiary,
                         ),
-                        const SizedBox(height: AppConstants.spacingL),
+                        const SizedBox(height: AppSpacing.lg),
                         Text(
                           'Transaksi tidak ditemukan',
                           style: AppTypography.bodyMedium.copyWith(
@@ -191,8 +192,8 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
 
                 return ListView.builder(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingL,
-                    vertical: AppConstants.spacingM,
+                    horizontal: AppSpacing.lg,
+                    vertical: AppSpacing.md,
                   ),
                   itemCount: filteredTransactions.length,
                   itemBuilder: (context, index) {
@@ -232,7 +233,7 @@ class _TransactionsListScreenState extends State<TransactionsListScreen> {
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppConstants.radiusL),
+          top: Radius.circular(AppRadius.lg),
         ),
       ),
       builder: (context) => FilterSheet(
@@ -296,11 +297,11 @@ class _TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Row(
@@ -321,7 +322,7 @@ class _TransactionCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(width: AppConstants.spacingM),
+          const SizedBox(width: AppSpacing.md),
 
           // Info
           Expanded(
@@ -483,7 +484,7 @@ class _FilterSheetState extends State<FilterSheet> {
       builder: (context, scrollController) => SingleChildScrollView(
         controller: scrollController,
         child: Container(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -509,7 +510,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ],
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Transaction type
               _buildFilterSection(
@@ -539,7 +540,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Category filter
               _buildFilterSection(
@@ -569,7 +570,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Member filter
               _buildFilterSection(
@@ -595,7 +596,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Date range
               _buildFilterSection(
@@ -607,7 +608,7 @@ class _FilterSheetState extends State<FilterSheet> {
                       _tempFilterStartDate,
                       (date) => setState(() => _tempFilterStartDate = date),
                     ),
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
                     _buildDatePicker(
                       'Sampai Tanggal',
                       _tempFilterEndDate,
@@ -617,7 +618,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // Apply button
               SizedBox(
@@ -639,7 +640,7 @@ class _FilterSheetState extends State<FilterSheet> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
             ],
           ),
         ),
@@ -657,7 +658,7 @@ class _FilterSheetState extends State<FilterSheet> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: AppConstants.spacingM),
+        const SizedBox(height: AppSpacing.md),
         child,
       ],
     );
@@ -667,17 +668,17 @@ class _FilterSheetState extends State<FilterSheet> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.only(bottom: AppConstants.spacingS),
+        margin: const EdgeInsets.only(bottom: AppSpacing.sm),
         padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.spacingM,
-          vertical: AppConstants.spacingS,
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.sm,
         ),
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.border,
             width: isSelected ? 2 : 1,
           ),
-          borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          borderRadius: BorderRadius.circular(AppRadius.md),
           color: isSelected ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
         ),
         child: Row(
@@ -697,7 +698,7 @@ class _FilterSheetState extends State<FilterSheet> {
                   ? const Icon(Icons.check, size: 10, color: Colors.white)
                   : null,
             ),
-            const SizedBox(width: AppConstants.spacingM),
+            const SizedBox(width: AppSpacing.md),
             Text(
               label,
               style: AppTypography.bodySmall.copyWith(
@@ -730,12 +731,12 @@ class _FilterSheetState extends State<FilterSheet> {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.spacingM,
-          vertical: AppConstants.spacingM,
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.md,
         ),
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.border),
-          borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          borderRadius: BorderRadius.circular(AppRadius.md),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -771,3 +772,5 @@ class _FilterSheetState extends State<FilterSheet> {
     );
   }
 }
+
+

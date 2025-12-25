@@ -3,7 +3,8 @@ import '../../../data/models/category.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/date_helper.dart';
@@ -165,7 +166,7 @@ class _TransactionGroup extends StatelessWidget {
           );
         }),
 
-        const SizedBox(height: AppConstants.spacingM),
+        const SizedBox(height: AppSpacing.md),
       ],
     );
   }
@@ -797,11 +798,11 @@ class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(AppConstants.spacingL),
-      padding: const EdgeInsets.all(AppConstants.spacingXL),
+      margin: const EdgeInsets.all(AppSpacing.lg),
+      padding: const EdgeInsets.all(AppSpacing.xxl),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
         border: Border.all(
           color: AppColors.border,
           width: 2,
@@ -822,12 +823,12 @@ class _EmptyState extends StatelessWidget {
               color: AppColors.primary.withOpacity(0.5),
             ),
           ),
-          const SizedBox(height: AppConstants.spacingL),
+          const SizedBox(height: AppSpacing.lg),
           Text(
             'Belum Ada Transaksi',
             style: AppTypography.headingSmall,
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Text(
             'Mulai catat transaksi keuangan keluarga Anda',
             style: AppTypography.bodyMedium.copyWith(
@@ -840,3 +841,4 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+

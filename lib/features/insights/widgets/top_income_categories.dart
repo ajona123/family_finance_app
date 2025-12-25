@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/transaction.dart';
@@ -45,10 +46,10 @@ class TopIncomeCategories extends StatelessWidget {
 
         if (sortedCategories.isEmpty) {
           return Container(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             decoration: BoxDecoration(
               color: AppColors.cardBackground,
-              borderRadius: BorderRadius.circular(AppConstants.radiusL),
+              borderRadius: BorderRadius.circular(AppRadius.lg),
             ),
             child: Center(
               child: Text(
@@ -66,10 +67,10 @@ class TopIncomeCategories extends StatelessWidget {
             sortedCategories.fold(0.0, (sum, entry) => sum + entry.value);
 
         return Container(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             border: Border.all(color: AppColors.border, width: 1),
           ),
           child: Column(
@@ -81,7 +82,7 @@ class TopIncomeCategories extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
               ...sortedCategories.asMap().entries.map((entry) {
                 final index = entry.key;
                 final categoryName = entry.value.key;
@@ -97,7 +98,7 @@ class TopIncomeCategories extends StatelessWidget {
                 return Padding(
                   padding: EdgeInsets.only(
                     bottom: index != sortedCategories.length - 1
-                        ? AppConstants.spacingM
+                        ? AppSpacing.md
                         : 0,
                   ),
                   child: Row(
@@ -116,7 +117,7 @@ class TopIncomeCategories extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: AppConstants.spacingM),
+                      const SizedBox(width: AppSpacing.md),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,12 +149,12 @@ class TopIncomeCategories extends StatelessWidget {
                   ),
                 );
               }).toList(),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
               Container(
-                padding: const EdgeInsets.all(AppConstants.spacingM),
+                padding: const EdgeInsets.all(AppSpacing.md),
                 decoration: BoxDecoration(
                   color: AppColors.income.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,3 +182,5 @@ class TopIncomeCategories extends StatelessWidget {
     );
   }
 }
+
+

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/providers/transaction_provider.dart';
@@ -127,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.all(AppConstants.spacingL),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               child: Text(
                 'Menu Transaksi',
                 style: AppTypography.headingSmall,
@@ -156,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               color: AppColors.border,
               height: 1,
               indent: 60,
-              endIndent: AppConstants.spacingL,
+              endIndent: AppSpacing.lg,
             ),
             ListTile(
               leading: Icon(
@@ -266,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               elevation: 0,
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: const EdgeInsets.only(
-                  left: AppConstants.spacingL,
+                  left: AppSpacing.lg,
                   bottom: 16,
                 ),
                 title: Column(
@@ -373,3 +374,4 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     );
   }
 }
+

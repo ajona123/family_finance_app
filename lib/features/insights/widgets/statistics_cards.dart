@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/transaction.dart';
@@ -43,11 +44,11 @@ class StatisticsCards extends StatelessWidget {
           children: [
             // BALANCE CARD (Top)
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: AppConstants.spacingM),
-              padding: const EdgeInsets.all(AppConstants.spacingL),
+              margin: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               decoration: BoxDecoration(
                 gradient: AppColors.primaryGradient,
-                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.primary.withOpacity(0.3),
@@ -84,7 +85,7 @@ class StatisticsCards extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: AppConstants.spacingM),
+            const SizedBox(height: AppSpacing.md),
 
             // INCOME & EXPENSE ROW
             Row(
@@ -92,10 +93,10 @@ class StatisticsCards extends StatelessWidget {
                 // INCOME CARD
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingL),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       gradient: AppColors.incomeGradient,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.income.withOpacity(0.2),
@@ -136,15 +137,15 @@ class StatisticsCards extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(width: AppConstants.spacingM),
+                const SizedBox(width: AppSpacing.md),
 
                 // EXPENSE CARD
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingL),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       gradient: AppColors.expenseGradient,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.expense.withOpacity(0.2),
@@ -192,3 +193,5 @@ class StatisticsCards extends StatelessWidget {
     );
   }
 }
+
+

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_constants.dart'
+import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/utils/currency_formatter.dart';
 import '../../../../data/providers/transaction_provider.dart';
 import '../../../../data/models/transaction.dart';
@@ -66,14 +67,14 @@ class _DebtListScreenState extends State<DebtListScreen> {
                     size: 80,
                     color: AppColors.income,
                   ),
-                  const SizedBox(height: AppConstants.spacingL),
+                  const SizedBox(height: AppSpacing.lg),
                   Text(
                     'Tidak ada hutang!',
                     style: AppTypography.bodyLarge.copyWith(
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingS),
+                  const SizedBox(height: AppSpacing.sm),
                   Text(
                     'Semua pelanggan sudah lunas',
                     style: AppTypography.bodyMedium.copyWith(
@@ -86,7 +87,7 @@ class _DebtListScreenState extends State<DebtListScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             itemCount: debtByCustomer.length,
             itemBuilder: (context, index) {
               final entries = debtByCustomer.entries.toList();
@@ -95,11 +96,11 @@ class _DebtListScreenState extends State<DebtListScreen> {
               final transactions = transactionsByCustomer[customerName] ?? [];
 
               return Container(
-                margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-                padding: const EdgeInsets.all(AppConstants.spacingL),
+                margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 decoration: BoxDecoration(
                   gradient: AppColors.expenseGradient,
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                   boxShadow: [
                     BoxShadow(
                       color: AppColors.expense.withOpacity(0.3),
@@ -139,13 +140,13 @@ class _DebtListScreenState extends State<DebtListScreen> {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.spacingM,
-                            vertical: AppConstants.spacingS,
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.sm,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.2),
                             borderRadius:
-                                BorderRadius.circular(AppConstants.radiusM),
+                                BorderRadius.circular(AppRadius.md),
                           ),
                           child: Text(
                             '⚠ Hutang',
@@ -157,7 +158,7 @@ class _DebtListScreenState extends State<DebtListScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
                     Text(
                       'Total Hutang',
                       style: AppTypography.caption.copyWith(
@@ -171,14 +172,14 @@ class _DebtListScreenState extends State<DebtListScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: AppConstants.spacingL),
+                    const SizedBox(height: AppSpacing.lg),
                     // Show breakdown of transactions
                     Container(
-                      padding: const EdgeInsets.all(AppConstants.spacingM),
+                      padding: const EdgeInsets.all(AppSpacing.md),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.1),
                         borderRadius:
-                            BorderRadius.circular(AppConstants.radiusM),
+                            BorderRadius.circular(AppRadius.md),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,12 +191,12 @@ class _DebtListScreenState extends State<DebtListScreen> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(height: AppConstants.spacingS),
+                          const SizedBox(height: AppSpacing.sm),
                           ...transactions.map((txn) {
                             final category = Category.getByType(txn.category);
                             return Padding(
                               padding: const EdgeInsets.symmetric(
-                                vertical: AppConstants.spacingS,
+                                vertical: AppSpacing.sm,
                               ),
                               child: Row(
                                 mainAxisAlignment:
@@ -252,3 +253,5 @@ class _DebtListScreenState extends State<DebtListScreen> {
     );
   }
 }
+
+

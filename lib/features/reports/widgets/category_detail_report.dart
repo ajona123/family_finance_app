@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/models/transaction.dart';
 import '../../../data/models/category.dart';
@@ -123,10 +124,10 @@ class _CategoryDetailCard extends StatelessWidget {
     final avgAmount = count > 0 ? total / count : 0;
 
     return Container(
-      margin: const EdgeInsets.only(bottom: AppConstants.spacingL),
+      margin: const EdgeInsets.only(bottom: AppSpacing.lg),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Column(
@@ -135,7 +136,7 @@ class _CategoryDetailCard extends StatelessWidget {
           GestureDetector(
             onTap: onToggle,
             child: Container(
-              padding: const EdgeInsets.all(AppConstants.spacingL),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               child: Row(
                 children: [
                   // Icon
@@ -154,7 +155,7 @@ class _CategoryDetailCard extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
 
                   // Info
                   Expanded(
@@ -213,7 +214,7 @@ class _CategoryDetailCard extends StatelessWidget {
               thickness: 1,
             ),
             Container(
-              padding: const EdgeInsets.all(AppConstants.spacingL),
+              padding: const EdgeInsets.all(AppSpacing.lg),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -222,8 +223,8 @@ class _CategoryDetailCard extends StatelessWidget {
                     crossAxisCount: 2,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    mainAxisSpacing: AppConstants.spacingM,
-                    crossAxisSpacing: AppConstants.spacingM,
+                    mainAxisSpacing: AppSpacing.md,
+                    crossAxisSpacing: AppSpacing.md,
                     childAspectRatio: 1.5,
                     children: [
                       _StatBox(
@@ -249,7 +250,7 @@ class _CategoryDetailCard extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: AppConstants.spacingL),
+                  const SizedBox(height: AppSpacing.lg),
 
                   // Transactions list
                   if (transactions.isNotEmpty) ...[
@@ -259,11 +260,11 @@ class _CategoryDetailCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
                     ...transactions.take(5).map((txn) {
                       return Padding(
                         padding: const EdgeInsets.only(
-                          bottom: AppConstants.spacingS,
+                          bottom: AppSpacing.sm,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -303,7 +304,7 @@ class _CategoryDetailCard extends StatelessWidget {
                       );
                     }).toList(),
                     if (transactions.length > 5) ...[
-                      const SizedBox(height: AppConstants.spacingS),
+                      const SizedBox(height: AppSpacing.sm),
                       Text(
                         '+${transactions.length - 5} transaksi lainnya',
                         style: AppTypography.caption.copyWith(
@@ -337,10 +338,10 @@ class _StatBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppConstants.radiusM),
+        borderRadius: BorderRadius.circular(AppRadius.md),
         border: Border.all(color: color.withOpacity(0.3), width: 1),
       ),
       child: Column(
@@ -368,3 +369,5 @@ class _StatBox extends StatelessWidget {
     );
   }
 }
+
+

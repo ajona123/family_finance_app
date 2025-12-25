@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/models/transaction.dart';
 import '../../../data/models/category.dart';
@@ -114,11 +115,11 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
       ),
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppSpacing.lg),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,14 +131,14 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               Text(
                 widget.arisan.name,
                 style: AppTypography.bodyMedium.copyWith(
                   color: AppColors.textSecondary,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // PAYER SELECTION
               Text(
@@ -148,7 +149,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
               ),
               if (_payerError != null)
                 Padding(
-                  padding: const EdgeInsets.only(top: AppConstants.spacingS),
+                  padding: const EdgeInsets.only(top: AppSpacing.sm),
                   child: Text(
                     _payerError!,
                     style: AppTypography.bodySmall.copyWith(
@@ -156,7 +157,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                     ),
                   ),
                 ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               Consumer<MemberProvider>(
                 builder: (context, memberProvider, _) {
                   final participants = memberProvider.members
@@ -170,7 +171,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                             ? AppColors.error
                             : AppColors.border,
                       ),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: DropdownButton<String>(
                       value: _selectedPayerId,
@@ -178,7 +179,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                       underline: const SizedBox(),
                       hint: Padding(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: AppConstants.spacingM,
+                          horizontal: AppSpacing.md,
                         ),
                         child: Text(
                           'Pilih pembayar',
@@ -192,7 +193,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                             value: member.id,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: AppConstants.spacingM,
+                                horizontal: AppSpacing.md,
                               ),
                               child: Text(member.name),
                             ),
@@ -205,7 +206,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   );
                 },
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // JUMLAH PEMBAYARAN
               Text(
@@ -214,14 +215,14 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               TextField(
                 controller: _amountController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   hintText: 'Contoh: 300000',
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   errorText: _amountError,
                 ),
@@ -237,7 +238,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   }
                 },
               ),
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // TANGGAL PEMBAYARAN
               Text(
@@ -246,7 +247,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingS),
+              const SizedBox(height: AppSpacing.sm),
               GestureDetector(
                 onTap: () async {
                   final pickedDate = await showDatePicker(
@@ -260,10 +261,10 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   }
                 },
                 child: Container(
-                  padding: const EdgeInsets.all(AppConstants.spacingM),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.border),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -277,7 +278,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                   ),
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
 
               // BUTTONS
               Row(
@@ -289,7 +290,7 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
                       child: const Text('Batal'),
                     ),
                   ),
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: _validateAndSave,
@@ -305,3 +306,5 @@ class _RecordArisanPaymentDialogState extends State<RecordArisanPaymentDialog> {
     );
   }
 }
+
+

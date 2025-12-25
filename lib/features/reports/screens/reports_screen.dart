@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
@@ -81,10 +82,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
 
   Widget _buildPeriodSelector() {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Column(
@@ -96,7 +97,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
           Row(
             children: [
               Expanded(
@@ -114,12 +115,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingS,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
                     ),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.border),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Text(
                       '${_startDate.day}/${_startDate.month}/${_startDate.year}',
@@ -130,9 +131,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   ),
                 ),
               ),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Text('-', style: AppTypography.bodySmall),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: GestureDetector(
                   onTap: () async {
@@ -148,12 +149,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingS,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
                     ),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.border),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Text(
                       '${_endDate.day}/${_endDate.month}/${_endDate.year}',
@@ -177,13 +178,13 @@ class _ReportsScreenState extends State<ReportsScreen> {
       child: Row(
         children: [
           _buildReportTypeButton('Summary', 'summary'),
-          const SizedBox(width: AppConstants.spacingM),
+          const SizedBox(width: AppSpacing.md),
           _buildReportTypeButton('Kategori', 'category'),
-          const SizedBox(width: AppConstants.spacingM),
+          const SizedBox(width: AppSpacing.md),
           _buildReportTypeButton('Tren', 'trend'),
-          const SizedBox(width: AppConstants.spacingM),
+          const SizedBox(width: AppSpacing.md),
           _buildReportTypeButton('Transaksi', 'transactions'),
-          const SizedBox(width: AppConstants.spacingM),
+          const SizedBox(width: AppSpacing.md),
           _buildReportTypeButton('Arisan', 'arisan'),
         ],
       ),
@@ -196,12 +197,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
       onTap: () => setState(() => _reportType = type),
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.spacingL,
-          vertical: AppConstants.spacingM,
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
         ),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary : AppColors.cardBackground,
-          borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          borderRadius: BorderRadius.circular(AppRadius.md),
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.border,
             width: isSelected ? 2 : 1,
@@ -317,3 +318,5 @@ class _ReportsScreenState extends State<ReportsScreen> {
     );
   }
 }
+
+

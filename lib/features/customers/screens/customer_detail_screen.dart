@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_constants.dart'
+import '../../../../core/constants/app_spacing.dart';
 import '../../../../data/models/customer.dart';
 import '../../../../data/providers/transaction_provider.dart';
 import '../../../../data/models/transaction.dart';
@@ -32,18 +33,18 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
       context: context,
       builder: (context) => Dialog(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+          borderRadius: BorderRadius.circular(AppRadius.xl),
         ),
         child: Container(
-          padding: const EdgeInsets.all(AppConstants.spacingXL),
+          padding: const EdgeInsets.all(AppSpacing.xxl),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: const EdgeInsets.all(AppConstants.spacingM),
+                padding: const EdgeInsets.all(AppSpacing.md),
                 decoration: BoxDecoration(
                   gradient: AppColors.primaryGradient,
-                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -63,12 +64,12 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
               Text(
                 'Rp ${transaction.amount.toStringAsFixed(0).replaceAll(RegExp(r'\B(?=(\d{3})+(?!\d))'), '.')}',
                 style: AppTypography.headingSmall,
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
               Column(
                 children: [
                   _PaymentStatusOption(
@@ -86,7 +87,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                       Navigator.pop(context);
                     },
                   ),
-                  const SizedBox(height: AppConstants.spacingM),
+                  const SizedBox(height: AppSpacing.md),
                   _PaymentStatusOption(
                     isSelected: transaction.paymentStatus == 'unpaid',
                     title: 'Belum Lunas',
@@ -96,7 +97,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                     },
                   ),
                   if (transaction.paymentStatus == 'unpaid') ...[
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
                     TextField(
                       controller: remainingController,
                       keyboardType: TextInputType.number,
@@ -104,28 +105,28 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                         hintText: 'Jumlah Sisa (Rp)',
                         border: OutlineInputBorder(
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusM),
+                              BorderRadius.circular(AppRadius.md),
                           borderSide:
                               const BorderSide(color: Color(0xFFE8E8E8)),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusM),
+                              BorderRadius.circular(AppRadius.md),
                           borderSide: const BorderSide(
                             color: Color(0xFF6366F1),
                             width: 2,
                           ),
                         ),
                         contentPadding: const EdgeInsets.symmetric(
-                          horizontal: AppConstants.spacingM,
-                          vertical: AppConstants.spacingM,
+                          horizontal: AppSpacing.md,
+                          vertical: AppSpacing.md,
                         ),
                       ),
                     ),
                   ],
                 ],
               ),
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
               Row(
                 children: [
                   Expanded(
@@ -138,10 +139,10 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                         ),
                         shape: RoundedRectangleBorder(
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusL),
+                              BorderRadius.circular(AppRadius.lg),
                         ),
                         padding: const EdgeInsets.symmetric(
-                          vertical: AppConstants.spacingM,
+                          vertical: AppSpacing.md,
                         ),
                       ),
                       child: Text(
@@ -153,7 +154,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: AppConstants.spacingM),
+                  const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
@@ -176,10 +177,10 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                         backgroundColor: AppColors.primary,
                         shape: RoundedRectangleBorder(
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusL),
+                              BorderRadius.circular(AppRadius.lg),
                         ),
                         padding: const EdgeInsets.symmetric(
-                          vertical: AppConstants.spacingM,
+                          vertical: AppSpacing.md,
                         ),
                       ),
                       child: Text(
@@ -245,7 +246,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                     size: 80,
                     color: AppColors.border,
                   ),
-                  const SizedBox(height: AppConstants.spacingL),
+                  const SizedBox(height: AppSpacing.lg),
                   Text(
                     'Belum ada transaksi',
                     style: AppTypography.bodyLarge.copyWith(
@@ -261,15 +262,15 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
             children: [
               // SUMMARY CARDS
               Container(
-                margin: const EdgeInsets.all(AppConstants.spacingL),
+                margin: const EdgeInsets.all(AppSpacing.lg),
                 child: Column(
                   children: [
                     // Total Card
                     Container(
-                      padding: const EdgeInsets.all(AppConstants.spacingL),
+                      padding: const EdgeInsets.all(AppSpacing.lg),
                       decoration: BoxDecoration(
                         gradient: AppColors.incomeGradient,
-                        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                        borderRadius: BorderRadius.circular(AppRadius.lg),
                         boxShadow: [
                           BoxShadow(
                             color: AppColors.income.withOpacity(0.3),
@@ -299,14 +300,14 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                       ),
                     ),
                     if (totalRemaining > 0) ...[
-                      const SizedBox(height: AppConstants.spacingM),
+                      const SizedBox(height: AppSpacing.md),
                       // Remaining Card
                       Container(
-                        padding: const EdgeInsets.all(AppConstants.spacingL),
+                        padding: const EdgeInsets.all(AppSpacing.lg),
                         decoration: BoxDecoration(
                           gradient: AppColors.expenseGradient,
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusL),
+                              BorderRadius.circular(AppRadius.lg),
                           boxShadow: [
                             BoxShadow(
                               color: AppColors.expense.withOpacity(0.3),
@@ -339,13 +340,13 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                             ),
                             Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: AppConstants.spacingM,
-                                vertical: AppConstants.spacingS,
+                                horizontal: AppSpacing.md,
+                                vertical: AppSpacing.sm,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(
-                                  AppConstants.radiusM,
+                                  AppRadius.md,
                                 ),
                               ),
                               child: Text(
@@ -368,7 +369,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
               Expanded(
                 child: ListView.builder(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingL,
+                    horizontal: AppSpacing.lg,
                   ),
                   itemCount: transactions.length,
                   itemBuilder: (context, index) {
@@ -382,13 +383,13 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                       },
                       child: Container(
                         margin: const EdgeInsets.only(
-                          bottom: AppConstants.spacingM,
+                          bottom: AppSpacing.md,
                         ),
-                        padding: const EdgeInsets.all(AppConstants.spacingL),
+                        padding: const EdgeInsets.all(AppSpacing.lg),
                         decoration: BoxDecoration(
                           color: AppColors.cardBackground,
                           borderRadius:
-                              BorderRadius.circular(AppConstants.radiusL),
+                              BorderRadius.circular(AppRadius.lg),
                           border: Border.all(
                             color: AppColors.border,
                             width: 1,
@@ -408,15 +409,15 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                 ),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: AppConstants.spacingM,
-                                    vertical: AppConstants.spacingS,
+                                    horizontal: AppSpacing.md,
+                                    vertical: AppSpacing.sm,
                                   ),
                                   decoration: BoxDecoration(
                                     color: isLunas
                                         ? AppColors.income.withOpacity(0.2)
                                         : AppColors.expense.withOpacity(0.2),
                                     borderRadius: BorderRadius.circular(
-                                      AppConstants.radiusM,
+                                      AppRadius.md,
                                     ),
                                   ),
                                   child: Text(
@@ -431,7 +432,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: AppConstants.spacingM),
+                            const SizedBox(height: AppSpacing.md),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -484,13 +485,13 @@ class _PaymentStatusOption extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(AppConstants.spacingM),
+        padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.border,
             width: isSelected ? 2 : 1,
           ),
-          borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          borderRadius: BorderRadius.circular(AppRadius.md),
           color: isSelected ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
         ),
         child: Row(
@@ -514,7 +515,7 @@ class _PaymentStatusOption extends StatelessWidget {
                     )
                   : null,
             ),
-            const SizedBox(width: AppConstants.spacingM),
+            const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -540,3 +541,5 @@ class _PaymentStatusOption extends StatelessWidget {
     );
   }
 }
+
+

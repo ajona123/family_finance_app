@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/arisan_provider.dart';
 import '../../../data/providers/member_provider.dart';
@@ -26,11 +27,11 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // TITLE
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Text(
                   '📅 Kalender Arisan',
                   style: AppTypography.headingSmall.copyWith(
@@ -39,17 +40,17 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              const SizedBox(height: AppSpacing.lg),
 
               // UPCOMING ARISANS CARDS
               if (upcomingArisans.isEmpty)
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   child: Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingL),
+                    padding: const EdgeInsets.all(AppSpacing.lg),
                     decoration: BoxDecoration(
                       color: AppColors.cardBackground,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       border: Border.all(color: AppColors.border),
                     ),
                     child: Column(
@@ -59,7 +60,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                           size: 48,
                           color: AppColors.textSecondary.withOpacity(0.3),
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        const SizedBox(height: AppSpacing.md),
                         Text(
                           'Tidak ada arisan mendatang 30 hari ke depan',
                           style: AppTypography.labelMedium.copyWith(
@@ -73,7 +74,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                 )
               else
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -83,7 +84,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: AppConstants.spacingM),
+                      const SizedBox(height: AppSpacing.md),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -94,11 +95,11 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
 
                             return Container(
                               width: 280,
-                              margin: const EdgeInsets.only(right: AppConstants.spacingM),
-                              padding: const EdgeInsets.all(AppConstants.spacingM),
+                              margin: const EdgeInsets.only(right: AppSpacing.md),
+                              padding: const EdgeInsets.all(AppSpacing.md),
                               decoration: BoxDecoration(
                                 color: const Color(0xFFAB47BC).withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                                borderRadius: BorderRadius.circular(AppRadius.md),
                                 border: Border.all(
                                   color: const Color(0xFFAB47BC).withOpacity(0.3),
                                 ),
@@ -121,7 +122,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                                       ),
                                       Container(
                                         padding: const EdgeInsets.symmetric(
-                                          horizontal: AppConstants.spacingS,
+                                          horizontal: AppSpacing.sm,
                                           vertical: 2,
                                         ),
                                         decoration: BoxDecoration(
@@ -163,7 +164,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                                   const SizedBox(height: 8),
                                   Container(
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: AppConstants.spacingS,
+                                      horizontal: AppSpacing.sm,
                                       vertical: 2,
                                     ),
                                     decoration: BoxDecoration(
@@ -220,11 +221,11 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                   ),
                 ),
 
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
 
               // PAYMENT HISTORY
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingL),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -234,7 +235,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
                     Consumer2<ArisanProvider, MemberProvider>(
                       builder: (context, arisanProvider, memberProvider, _) {
                         // Get all transactions related to arisans
@@ -259,11 +260,11 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
 
                         if (paymentHistory.isEmpty) {
                           return Container(
-                            padding: const EdgeInsets.all(AppConstants.spacingL),
+                            padding: const EdgeInsets.all(AppSpacing.lg),
                             decoration: BoxDecoration(
                               color: AppColors.cardBackground,
                               borderRadius:
-                                  BorderRadius.circular(AppConstants.radiusM),
+                                  BorderRadius.circular(AppRadius.md),
                               border: Border.all(color: AppColors.border),
                             ),
                             child: Text(
@@ -286,15 +287,15 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                             return Container(
                               margin: EdgeInsets.only(
                                 bottom: index < paymentHistory.length - 1
-                                    ? AppConstants.spacingM
+                                    ? AppSpacing.md
                                     : 0,
                               ),
                               padding:
-                                  const EdgeInsets.all(AppConstants.spacingM),
+                                  const EdgeInsets.all(AppSpacing.md),
                               decoration: BoxDecoration(
                                 color: AppColors.cardBackground,
                                 borderRadius: BorderRadius.circular(
-                                    AppConstants.radiusM),
+                                    AppRadius.md),
                                 border: Border.all(color: AppColors.border),
                               ),
                               child: Row(
@@ -314,7 +315,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                                           ),
                                         ),
                                         const SizedBox(
-                                            height: AppConstants.spacingS),
+                                            height: AppSpacing.sm),
                                         Text(
                                           '${payment['payerName']} • ${paymentDate.day}/${paymentDate.month}/${paymentDate.year}',
                                           style: AppTypography.bodySmall
@@ -343,7 +344,7 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingXL),
+              const SizedBox(height: AppSpacing.xxl),
             ],
           ),
         );
@@ -351,3 +352,5 @@ class _ArisanCalendarWidgetState extends State<ArisanCalendarWidget> {
     );
   }
 }
+
+

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_constants.dart'
+import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/default_customers.dart';
 import '../../../../data/providers/customer_provider.dart';
 import '../../../../data/providers/transaction_provider.dart';
@@ -33,18 +34,18 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => Dialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
           ),
           child: Container(
-            padding: const EdgeInsets.all(AppConstants.spacingXL),
+            padding: const EdgeInsets.all(AppSpacing.xxl),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  padding: const EdgeInsets.all(AppConstants.spacingM),
+                  padding: const EdgeInsets.all(AppSpacing.md),
                   decoration: BoxDecoration(
                     gradient: AppColors.primaryGradient,
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +65,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 // DROPDOWN FROM DEFAULT CUSTOMERS
                 Text(
                   'Pilih dari daftar:',
@@ -73,11 +74,11 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                const SizedBox(height: AppConstants.spacingM),
+                const SizedBox(height: AppSpacing.md),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(color: const Color(0xFFE8E8E8)),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   child: DropdownButton<String>(
                     value: _selectedCustomerName,
@@ -94,8 +95,8 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                         value: name,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: AppConstants.spacingM,
-                            vertical: AppConstants.spacingS,
+                            horizontal: AppSpacing.md,
+                            vertical: AppSpacing.sm,
                           ),
                           child: Text(
                             name,
@@ -113,17 +114,17 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                       });
                     },
                     padding: const EdgeInsets.only(
-                      left: AppConstants.spacingM,
-                      right: AppConstants.spacingM,
+                      left: AppSpacing.md,
+                      right: AppSpacing.md,
                     ),
                   ),
                 ),
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 Divider(
                   color: AppColors.border,
-                  height: AppConstants.spacingL,
+                  height: AppSpacing.lg,
                 ),
-                const SizedBox(height: AppConstants.spacingL),
+                const SizedBox(height: AppSpacing.lg),
                 // OR CUSTOM NAME INPUT
                 Text(
                   'Atau masukkan nama baru:',
@@ -132,7 +133,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                const SizedBox(height: AppConstants.spacingM),
+                const SizedBox(height: AppSpacing.md),
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -141,24 +142,24 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                       color: AppColors.textSecondary,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       borderSide: const BorderSide(color: Color(0xFFE8E8E8)),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       borderSide: const BorderSide(
                         color: Color(0xFF6366F1),
                         width: 2,
                       ),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingM,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.md,
                     ),
                   ),
                   style: AppTypography.bodyMedium,
                 ),
-                const SizedBox(height: AppConstants.spacingXL),
+                const SizedBox(height: AppSpacing.xxl),
                 Row(
                   children: [
                     Expanded(
@@ -171,10 +172,10 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.circular(AppConstants.radiusL),
+                                BorderRadius.circular(AppRadius.lg),
                           ),
                           padding: const EdgeInsets.symmetric(
-                            vertical: AppConstants.spacingM,
+                            vertical: AppSpacing.md,
                           ),
                         ),
                         child: Text(
@@ -186,7 +187,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: AppConstants.spacingM),
+                    const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
@@ -201,10 +202,10 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                           backgroundColor: AppColors.primary,
                           shape: RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.circular(AppConstants.radiusL),
+                                BorderRadius.circular(AppRadius.lg),
                           ),
                           padding: const EdgeInsets.symmetric(
-                            vertical: AppConstants.spacingM,
+                            vertical: AppSpacing.md,
                           ),
                         ),
                         child: Text(
@@ -257,14 +258,14 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                     size: 80,
                     color: AppColors.border,
                   ),
-                  const SizedBox(height: AppConstants.spacingL),
+                  const SizedBox(height: AppSpacing.lg),
                   Text(
                     'Belum ada pelanggan',
                     style: AppTypography.bodyLarge.copyWith(
                       color: AppColors.textSecondary,
                     ),
                   ),
-                  const SizedBox(height: AppConstants.spacingXL),
+                  const SizedBox(height: AppSpacing.xxl),
                   ElevatedButton.icon(
                     onPressed: _showAddCustomerDialog,
                     icon: const Icon(Icons.person_add_rounded),
@@ -273,11 +274,11 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                       backgroundColor: AppColors.primary,
                       shape: RoundedRectangleBorder(
                         borderRadius:
-                            BorderRadius.circular(AppConstants.radiusL),
+                            BorderRadius.circular(AppRadius.lg),
                       ),
                       padding: const EdgeInsets.symmetric(
-                        horizontal: AppConstants.spacingXL,
-                        vertical: AppConstants.spacingM,
+                        horizontal: AppSpacing.xxl,
+                        vertical: AppSpacing.md,
                       ),
                     ),
                   ),
@@ -287,7 +288,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.all(AppConstants.spacingL),
+            padding: const EdgeInsets.all(AppSpacing.lg),
             itemCount: customers.length,
             itemBuilder: (context, index) {
               final customer = customers[index];
@@ -319,13 +320,13 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                   );
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: AppConstants.spacingM),
-                  padding: const EdgeInsets.all(AppConstants.spacingL),
+                  margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                  padding: const EdgeInsets.all(AppSpacing.lg),
                   decoration: BoxDecoration(
                     gradient: isFullyPaid
                         ? AppColors.incomeGradient
                         : AppColors.expenseGradient,
-                    borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                    borderRadius: BorderRadius.circular(AppRadius.lg),
                     boxShadow: [
                       BoxShadow(
                         color: (isFullyPaid
@@ -368,13 +369,13 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: AppConstants.spacingM,
-                              vertical: AppConstants.spacingS,
+                              horizontal: AppSpacing.md,
+                              vertical: AppSpacing.sm,
                             ),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.2),
                               borderRadius:
-                                  BorderRadius.circular(AppConstants.radiusM),
+                                  BorderRadius.circular(AppRadius.md),
                             ),
                             child: Text(
                               isFullyPaid ? '✓ Lunas' : '⊙ Sisa',
@@ -386,7 +387,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: AppConstants.spacingM),
+                      const SizedBox(height: AppSpacing.md),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -445,3 +446,5 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
     );
   }
 }
+
+

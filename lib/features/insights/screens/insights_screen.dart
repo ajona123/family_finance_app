@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../widgets/category_breakdown.dart';
 import '../widgets/monthly_comparison.dart';
 import '../widgets/statistics_cards.dart';
@@ -39,14 +40,14 @@ class _InsightsScreenState extends State<InsightsScreen> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(AppConstants.spacingL),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // PERIOD SELECTOR
             _buildPeriodSelector(),
 
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppSpacing.lg),
 
             // STATISTICS CARDS
             StatisticsCards(
@@ -54,12 +55,12 @@ class _InsightsScreenState extends State<InsightsScreen> {
               endDate: _endDate.add(const Duration(days: 1)),
             ),
 
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppSpacing.lg),
 
             // MONTHLY COMPARISON
             const MonthlyComparison(),
 
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppSpacing.lg),
 
             // TOP INCOME CATEGORIES
             TopIncomeCategories(
@@ -67,7 +68,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
               endDate: _endDate.add(const Duration(days: 1)),
             ),
 
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppSpacing.lg),
 
             // TOP SPENDING CATEGORIES
             TopSpendingCategories(
@@ -75,17 +76,17 @@ class _InsightsScreenState extends State<InsightsScreen> {
               endDate: _endDate.add(const Duration(days: 1)),
             ),
 
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppSpacing.lg),
 
             // INCOME BREAKDOWN
             const IncomeBreakdown(),
 
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppSpacing.lg),
 
             // CATEGORY BREAKDOWN
             const CategoryBreakdown(),
 
-            const SizedBox(height: AppConstants.spacingXL),
+            const SizedBox(height: AppSpacing.xxl),
           ],
         ),
       ),
@@ -94,10 +95,10 @@ class _InsightsScreenState extends State<InsightsScreen> {
 
   Widget _buildPeriodSelector() {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Column(
@@ -109,7 +110,7 @@ class _InsightsScreenState extends State<InsightsScreen> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
           Row(
             children: [
               Expanded(
@@ -127,12 +128,12 @@ class _InsightsScreenState extends State<InsightsScreen> {
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingS,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
                     ),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.border),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Text(
                       '${_startDate.day}/${_startDate.month}/${_startDate.year}',
@@ -143,12 +144,12 @@ class _InsightsScreenState extends State<InsightsScreen> {
                   ),
                 ),
               ),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Text(
                 '-',
                 style: AppTypography.bodySmall,
               ),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: GestureDetector(
                   onTap: () async {
@@ -164,12 +165,12 @@ class _InsightsScreenState extends State<InsightsScreen> {
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingS,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.sm,
                     ),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.border),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Text(
                       '${_endDate.day}/${_endDate.month}/${_endDate.year}',
@@ -187,3 +188,4 @@ class _InsightsScreenState extends State<InsightsScreen> {
     );
   }
 }
+

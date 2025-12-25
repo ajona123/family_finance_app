@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/app_animations.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 
@@ -67,7 +68,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
         child: Container(
           decoration: BoxDecoration(
             gradient: AppColors.primaryGradient,
-            borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+            borderRadius: BorderRadius.circular(AppRadius.xl),
             boxShadow: [
               BoxShadow(
                 color: AppColors.primary.withOpacity(0.3),
@@ -87,7 +88,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppConstants.radiusXL),
+                    borderRadius: BorderRadius.circular(AppRadius.xl),
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -129,7 +130,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
 
               // CONTENT
               Padding(
-                padding: const EdgeInsets.all(AppConstants.spacingL),
+                padding: const EdgeInsets.all(AppSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -167,7 +168,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                       ],
                     ),
 
-                    const SizedBox(height: AppConstants.spacingL),
+                    const SizedBox(height: AppSpacing.lg),
 
                     // BALANCE AMOUNT
                     TweenAnimationBuilder<double>(
@@ -187,7 +188,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                       },
                     ),
 
-                    const SizedBox(height: AppConstants.spacingM),
+                    const SizedBox(height: AppSpacing.md),
 
                     // CHANGE PERCENTAGE
                     Container(
@@ -232,3 +233,4 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
     );
   }
 }
+

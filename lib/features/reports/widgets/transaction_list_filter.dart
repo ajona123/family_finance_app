@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_constants.dart'
+import '../../../core/constants/app_spacing.dart';
 import '../../../data/models/transaction.dart';
 import '../../../data/models/category.dart';
 
@@ -101,10 +102,10 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingM),
+      padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        borderRadius: BorderRadius.circular(AppRadius.lg),
         border: Border.all(color: AppColors.border, width: 1),
       ),
       child: Column(
@@ -131,7 +132,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               ),
             ],
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Search field
           TextField(
@@ -143,21 +144,21 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               ),
               prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                borderRadius: BorderRadius.circular(AppRadius.md),
                 borderSide: const BorderSide(color: AppColors.border),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                borderRadius: BorderRadius.circular(AppRadius.md),
                 borderSide: const BorderSide(color: AppColors.border),
               ),
               contentPadding: const EdgeInsets.symmetric(
-                horizontal: AppConstants.spacingM,
-                vertical: AppConstants.spacingM,
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.md,
               ),
             ),
             onChanged: (_) => _applyFilter(),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Member filter
           Text(
@@ -166,12 +167,12 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.border),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: DropdownButton<String>(
               isExpanded: true,
@@ -202,7 +203,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               },
             ),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Transaction type filter
           Text(
@@ -211,12 +212,12 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.border),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: DropdownButton<TransactionType>(
               isExpanded: true,
@@ -255,7 +256,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               },
             ),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Category filter
           Text(
@@ -264,12 +265,12 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.border),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: DropdownButton<CategoryType>(
               isExpanded: true,
@@ -313,7 +314,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               },
             ),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Date range
           Text(
@@ -322,7 +323,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
               Expanded(
@@ -340,10 +341,10 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
                     }
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingM),
+                    padding: const EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.border),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,7 +367,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
                   ),
                 ),
               ),
-              const SizedBox(width: AppConstants.spacingM),
+              const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: GestureDetector(
                   onTap: () async {
@@ -382,10 +383,10 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
                     }
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingM),
+                    padding: const EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
                       border: Border.all(color: AppColors.border),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -410,7 +411,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               ),
             ],
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Sorting
           Text(
@@ -419,12 +420,12 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppConstants.spacingM),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.border),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+              borderRadius: BorderRadius.circular(AppRadius.md),
             ),
             child: DropdownButton<String>(
               isExpanded: true,
@@ -475,7 +476,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               },
             ),
           ),
-          const SizedBox(height: AppConstants.spacingM),
+          const SizedBox(height: AppSpacing.md),
 
           // Amount range
           Text(
@@ -484,7 +485,7 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: AppConstants.spacingS),
+          const SizedBox(height: AppSpacing.sm),
           Row(
             children: [
               Expanded(
@@ -495,16 +496,16 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
                       color: AppColors.textSecondary,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       borderSide: const BorderSide(color: AppColors.border),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       borderSide: const BorderSide(color: AppColors.border),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingM,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.md,
                     ),
                   ),
                   keyboardType: TextInputType.number,
@@ -514,12 +515,12 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
                   },
                 ),
               ),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Text(
                 '-',
                 style: AppTypography.labelSmall,
               ),
-              const SizedBox(width: AppConstants.spacingS),
+              const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
@@ -528,16 +529,16 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
                       color: AppColors.textSecondary,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       borderSide: const BorderSide(color: AppColors.border),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                      borderRadius: BorderRadius.circular(AppRadius.md),
                       borderSide: const BorderSide(color: AppColors.border),
                     ),
                     contentPadding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingM,
-                      vertical: AppConstants.spacingM,
+                      horizontal: AppSpacing.md,
+                      vertical: AppSpacing.md,
                     ),
                   ),
                   keyboardType: TextInputType.number,
@@ -554,3 +555,5 @@ class _TransactionListFilterState extends State<TransactionListFilter> {
     );
   }
 }
+
+
