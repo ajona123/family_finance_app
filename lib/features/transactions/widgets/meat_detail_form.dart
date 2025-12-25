@@ -3,9 +3,8 @@ import '../../../data/models/category.dart';
 import 'package:flutter/services.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart'
 import '../../../core/constants/app_spacing.dart';
-import '../../../core/constants/app_spacing.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/models/meat_item.dart';
@@ -790,4 +789,5 @@ class _MeatItemCardState extends State<_MeatItemCard>
     );
   }
 }
+
 

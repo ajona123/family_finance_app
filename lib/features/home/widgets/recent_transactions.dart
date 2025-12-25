@@ -3,8 +3,6 @@ import '../../../data/models/category.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart'
-import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../core/utils/date_helper.dart';
@@ -269,7 +267,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                   'Transaksi yang dihapus tidak dapat dikembalikan.',
                 ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: AppRadius.lg,
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
                 ),
                 actions: [
                   TextButton(
@@ -297,7 +295,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
             ),
             decoration: BoxDecoration(
               gradient: AppColors.expenseGradient,
-              borderRadius: AppRadius.lg,
+              borderRadius: BorderRadius.circular(AppRadius.lg),
             ),
             child: Icon(
               Icons.delete_outline_rounded,
@@ -333,7 +331,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                         );
                       }
                     : null,
-            borderRadius: AppRadius.lg,
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             child: Container(
               margin: EdgeInsets.symmetric(
                 horizontal: AppSpacing.lg,
@@ -342,8 +340,8 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
               padding: EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
                 color: AppColors.cardBackground,
-                borderRadius: AppRadius.lg,
-                boxShadow: [AppShadows.sm],
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                boxShadow: AppShadows.sm,
               ),
               child: Row(
               children: [
@@ -353,7 +351,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                   height: AppIconSize.lg,
                   decoration: BoxDecoration(
                     color: category.color,
-                    borderRadius: AppRadius.md,
+                    borderRadius: BorderRadius.circular(AppRadius.md),
                   ),
                   child: Center(
                     child: Text(
@@ -387,7 +385,7 @@ class _TransactionItemState extends State<_TransactionItem> with SingleTickerPro
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.primary.withOpacity(0.1),
-                                borderRadius: AppRadius.sm,
+                                borderRadius: BorderRadius.circular(AppRadius.sm),
                               ),
                               child: Text(
                                 member.name,
@@ -841,4 +839,7 @@ class _EmptyState extends StatelessWidget {
     );
   }
 }
+
+
+
 

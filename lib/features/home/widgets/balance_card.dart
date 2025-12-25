@@ -68,8 +68,8 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
         child: Container(
           decoration: BoxDecoration(
             gradient: AppColors.primaryGradient,
-            borderRadius: AppRadius.xl,
-            boxShadow: [AppShadows.xl],
+            borderRadius: BorderRadius.circular(AppRadius.xl),
+            boxShadow: AppShadows.xl,
           ),
           child: Stack(
             children: [
@@ -77,7 +77,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: AppRadius.xl,
+                    borderRadius: BorderRadius.circular(AppRadius.xl),
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -133,7 +133,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.2),
-                            borderRadius: AppRadius.full,
+                            borderRadius: BorderRadius.circular(AppRadius.full),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -189,7 +189,7 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
                         color: isPositive
                             ? Colors.white.withOpacity(0.2)
                             : AppColors.error.withOpacity(0.2),
-                        borderRadius: AppRadius.md,
+                        borderRadius: BorderRadius.circular(AppRadius.md),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -222,3 +222,5 @@ class _BalanceCardState extends State<BalanceCard> with SingleTickerProviderStat
     );
   }
 }
+
+

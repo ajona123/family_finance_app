@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_typography.dart';
-import '../../../../core/constants/app_constants.dart'
-import '../../../../core/constants/app_spacing.dart';
+import '';import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/default_customers.dart';
 import '../../../../data/providers/customer_provider.dart';
 import '../../../../data/providers/transaction_provider.dart';
@@ -446,5 +445,6 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
     );
   }
 }
+
 
 

@@ -148,8 +148,8 @@ class _StatCardState extends State<_StatCard> with SingleTickerProviderStateMixi
           padding: EdgeInsets.all(AppSpacing.lg),
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
-            borderRadius: AppRadius.lg,
-            boxShadow: AppAnimations.cardShadowPressed(_isPressed),
+            borderRadius: BorderRadius.circular(AppRadius.lg),
+            boxShadow: _isPressed ? AppShadows.md : AppShadows.lg,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +160,7 @@ class _StatCardState extends State<_StatCard> with SingleTickerProviderStateMixi
                 height: AppIconSize.lg,
                 decoration: BoxDecoration(
                   gradient: widget.gradient,
-                  borderRadius: AppRadius.md,
+                  borderRadius: BorderRadius.circular(AppRadius.md),
                 ),
                 child: Icon(
                   widget.icon,
@@ -202,3 +202,5 @@ class _StatCardState extends State<_StatCard> with SingleTickerProviderStateMixi
     );
   }
 }
+
+

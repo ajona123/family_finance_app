@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart'
-import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../data/providers/transaction_provider.dart';
@@ -121,20 +119,14 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         margin: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(
           color: AppColors.background,
-          borderRadius: AppRadius.lg,
-          boxShadow: [AppShadows.lg],
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          boxShadow: AppShadows.lg,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(AppSpacing.lg),
-              child: Text(
-                'Menu Transaksi',
-                style: AppTypography.headingSmall,
-              ),
-            ),
-            Divider(Spacing.lg),
               child: Text(
                 'Menu Transaksi',
                 style: AppTypography.headingSmall,
@@ -147,7 +139,13 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             ListTile(
               leading: Icon(
                 Icons.add_circle_outline_rounded,
-                color: AppColors.accent
+                color: AppColors.accent,
+                size: 20,
+              ),
+              title: Text(
+                'Tambah Transaksi',
+                style: AppTypography.labelMedium,
+              ),
               onTap: () {
                 Navigator.pop(context);
                 _navigateToAddTransaction();
@@ -270,24 +268,28 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   left: AppSpacing.lg,
                   bottom: 16,
                 ),
-                title: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '👋 Halo${selectedMember != null ? ', ${selectedMember.name}' : ''}!',
-                      style: AppTypography.headingMedium,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Kelola keuangan keluarga dengan mudah',
-                      style: AppTypography.bodySmall.copyWith(
-                        color: AppColors.textTertiary,
+                title: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '👋 Halo${selectedMember != null ? ', ${selectedMember.name}' : ''}!',
+                        style: AppTypography.headingMedium,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
                       ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                      const SizedBox(height: 4),
+                      Text(
+                        'Kelola keuangan keluarga dengan mudah',
+                        style: AppTypography.bodySmall.copyWith(
+                          color: AppColors.textTertiary,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -334,15 +336,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         scale: _fabAnimation,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: AppRadius.md,
+            borderRadius: BorderRadius.circular(AppRadius.md),
             gradient: AppColors.primaryGradient,
-            boxShadow: [AppShadows.xl],
+            boxShadow: AppShadows.xl,
           ),
           child: Material(
             color: Colors.transparent,
             child: InkWell(
               onTap: _showFABMenu,
-              borderRadius: AppRadius.md,
+              borderRadius: BorderRadius.circular(AppRadius.md),
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: AppSpacing.xl,
@@ -374,4 +376,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     );
   }
 }
+
+
 

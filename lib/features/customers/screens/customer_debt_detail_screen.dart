@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart'
+import '../../../utils/constants.dart';
 import '../../../core/constants/app_spacing.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/models/transaction.dart';
@@ -370,7 +370,7 @@ class _CustomerDebtDetailScreenState extends State<CustomerDebtDetailScreen> {
                   ),
                   decoration: BoxDecoration(
                     color: statusColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusS),
+                    borderRadius: AppRadius.radiusSm,
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -508,5 +508,6 @@ class _CustomerDebtDetailScreenState extends State<CustomerDebtDetailScreen> {
     return '${date.day} ${months[date.month - 1]} ${date.year} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
   }
 }
+
 
 
