@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/utils/currency_formatter.dart';
 import '../../../data/providers/transaction_provider.dart';
 import '../../../data/providers/member_provider.dart';
@@ -44,19 +45,19 @@ class _ReportsScreenState extends State<ReportsScreen> {
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(AppConstants.spacingL),
+        padding: EdgeInsets.all(AppSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // PERIOD SELECTOR
             _buildPeriodSelector(),
 
-            const SizedBox(height: AppConstants.spacingL),
+            SizedBox(height: AppSpacing.lg),
 
             // REPORT TYPE SELECTOR
             _buildReportTypeSelector(),
 
-            const SizedBox(height: AppConstants.spacingL),
+            SizedBox(height: AppSpacing.lg),
 
             // CONTENT BASED ON REPORT TYPE
             if (_reportType == 'summary') ...[
@@ -71,7 +72,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
               const ArisanCalendarWidget(),
             ],
 
-            const SizedBox(height: AppConstants.spacingXL),
+            SizedBox(height: AppSpacing.xxl),
           ],
         ),
       ),
@@ -254,7 +255,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
               'Ringkasan Per Anggota',
               style: AppTypography.headingSmall,
             ),
-            const SizedBox(height: AppConstants.spacingL),
+            SizedBox(height: AppSpacing.lg),
             ...memberTotals.entries.map((entry) {
               return MemberReportCard(
                 memberName: entry.key,
@@ -286,7 +287,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
               'Detail Per Kategori',
               style: AppTypography.headingSmall,
             ),
-            const SizedBox(height: AppConstants.spacingL),
+            SizedBox(height: AppSpacing.lg),
             CategoryDetailReport(
               transactions: transactions,
               startDate: _startDate,
@@ -307,7 +308,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
           'Tren Pengeluaran',
           style: AppTypography.headingSmall,
         ),
-        const SizedBox(height: AppConstants.spacingL),
+        SizedBox(height: AppSpacing.lg),
         MonthlyTrendChart(
           startDate: _startDate,
           endDate: adjustedEndDate,

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/constants/app_spacing.dart';
 import '../../../core/constants/default_customers.dart';
 import '../../../core/utils/haptic_feedback.dart';
 import '../../../core/utils/date_helper.dart';
@@ -294,9 +295,9 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                     ),
                   ),
                   background: Padding(
-                    padding: const EdgeInsets.only(
-                      left: AppConstants.spacingL,
-                      right: AppConstants.spacingL,
+                    padding: EdgeInsets.only(
+                      left: AppSpacing.lg,
+                      right: AppSpacing.lg,
                       top: 60,
                     ),
                     child: Column(
@@ -328,7 +329,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
               // CONTENT
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.all(AppConstants.spacingL),
+                  padding: EdgeInsets.all(AppSpacing.lg),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -337,37 +338,37 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                         icon: Icons.person_rounded,
                         label: 'Pilih Anggota',
                       ),
-                      const SizedBox(height: AppConstants.spacingM),
+                      SizedBox(height: AppSpacing.md),
                       const MemberSelector(),
 
-                      const SizedBox(height: AppConstants.spacingXL),
+                      SizedBox(height: AppSpacing.xxl),
 
                       // TRANSACTION TYPE
                       _SectionLabel(
                         icon: Icons.swap_horiz_rounded,
                         label: 'Jenis Transaksi',
                       ),
-                      const SizedBox(height: AppConstants.spacingM),
+                      SizedBox(height: AppSpacing.md),
                       TransactionTypeToggle(
                         selectedType: _selectedType,
                         onChanged: _onTypeChanged,
                       ),
 
-                      const SizedBox(height: AppConstants.spacingXL),
+                      SizedBox(height: AppSpacing.xxl),
 
                       // CATEGORY
                       _SectionLabel(
                         icon: Icons.category_rounded,
                         label: 'Kategori',
                       ),
-                      const SizedBox(height: AppConstants.spacingM),
+                      SizedBox(height: AppSpacing.md),
                       CategoryGrid(
                         selectedCategory: _selectedCategory,
                         onCategorySelected: _onCategorySelected,
                         transactionType: _selectedType,
                       ),
 
-                      const SizedBox(height: AppConstants.spacingXL),
+                      SizedBox(height: AppSpacing.xxl),
 
                       // MEAT DETAILS (if category is meat)
                       if (requiresMeatDetails) ...[
@@ -376,7 +377,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           icon: Icons.shopping_bag_rounded,
                           label: 'Detail Potongan Daging',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         MeatDetailForm(
                           meatItems: _meatItems,
                           onChanged: _onMeatItemsChanged,
@@ -395,7 +396,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             setState(() => _remainingAmount = amount);
                           },
                         ),
-                        const SizedBox(height: AppConstants.spacingXL),
+                        SizedBox(height: AppSpacing.xxl),
                       ],
 
                       // ARISAN SELECTION
@@ -404,7 +405,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           icon: Icons.savings_rounded,
                           label: 'Pilih Arisan',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         Consumer<ArisanProvider>(
                           builder: (context, arisanProvider, _) {
                             final activeArisans = arisanProvider.getActiveArisans();
@@ -426,7 +427,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                           size: 48,
                                           color: AppColors.textSecondary.withOpacity(0.3),
                                         ),
-                                        const SizedBox(height: AppConstants.spacingM),
+                                        SizedBox(height: AppSpacing.md),
                                         Text(
                                           'Belum ada arisan aktif',
                                           style: AppTypography.bodyMedium.copyWith(
@@ -486,12 +487,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                       ),
                                       // Arisan detail form (if selected)
                                       if (_selectedArisanId != null) ...[
-                                        const SizedBox(height: AppConstants.spacingL),
+                                        SizedBox(height: AppSpacing.lg),
                                         _SectionLabel(
                                           icon: Icons.calendar_today_rounded,
                                           label: 'Tanggal Pembayaran',
                                         ),
-                                        const SizedBox(height: AppConstants.spacingM),
+                                        SizedBox(height: AppSpacing.md),
                                         GestureDetector(
                                           onTap: () async {
                                             final pickedDate = await showDatePicker(
@@ -528,12 +529,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(height: AppConstants.spacingL),
+                                        SizedBox(height: AppSpacing.lg),
                                         _SectionLabel(
                                           icon: Icons.repeat_rounded,
                                           label: 'Durasi Siklus',
                                         ),
-                                        const SizedBox(height: AppConstants.spacingM),
+                                        SizedBox(height: AppSpacing.md),
                                         Container(
                                           decoration: BoxDecoration(
                                             border: Border.all(color: const Color(0xFFE8E8E8)),
@@ -569,7 +570,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                             ),
                                           ),
                                         ),
-                                        const SizedBox(height: AppConstants.spacingL),
+                                        SizedBox(height: AppSpacing.lg),
                                         // INFO: Calculated total
                                         Container(
                                           padding: const EdgeInsets.all(AppConstants.spacingL),
@@ -621,7 +622,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             );
                           },
                         ),
-                        const SizedBox(height: AppConstants.spacingXL),
+                        SizedBox(height: AppSpacing.xxl),
                       ],
 
                       // PELANGGAN RDFF PAYMENT STATUS & NAME
@@ -630,7 +631,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           icon: Icons.person_rounded,
                           label: 'Nama Pelanggan',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(color: const Color(0xFFE8E8E8)),
@@ -672,12 +673,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             ),
                           ),
                         ),
-                        const SizedBox(height: AppConstants.spacingXL),
+                        SizedBox(height: AppSpacing.xxl),
                         _SectionLabel(
                           icon: Icons.receipt_rounded,
                           label: 'Status Pembayaran',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         Column(
                           children: [
                             _PaymentStatusTile(
@@ -691,7 +692,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                                 });
                               },
                             ),
-                            const SizedBox(height: AppConstants.spacingM),
+                            SizedBox(height: AppSpacing.md),
                             _PaymentStatusTile(
                               isSelected: _paymentStatus == 'unpaid',
                               title: 'Belum Lunas',
@@ -702,7 +703,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             ),
                           ],
                         ),
-                        const SizedBox(height: AppConstants.spacingXL),
+                        SizedBox(height: AppSpacing.xxl),
                       ],
 
 
@@ -713,12 +714,12 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           icon: Icons.payments_rounded,
                           label: _selectedCategory == CategoryType.arisan ? 'Nominal Per Hari' : 'Nominal',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         AmountInput(
                           amount: _amount,
                           onChanged: _onAmountChanged,
                         ),
-                        const SizedBox(height: AppConstants.spacingXL),
+                        SizedBox(height: AppSpacing.xxl),
                       ],
 
                       // REMAINING AMOUNT INPUT (if unpaid)
@@ -727,7 +728,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           icon: Icons.money_off_rounded,
                           label: 'Jumlah Sisa (Rp)',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         TextField(
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
@@ -744,7 +745,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                             ),
                           ),
                         ),
-                        const SizedBox(height: AppConstants.spacingXL),
+                        SizedBox(height: AppSpacing.xxl),
                       ],
 
                       // NOTE
@@ -753,7 +754,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen>
                           icon: Icons.notes_rounded,
                           label: 'Catatan (Opsional)',
                         ),
-                        const SizedBox(height: AppConstants.spacingM),
+                        SizedBox(height: AppSpacing.md),
                         TextField(
                           controller: _noteController,
                           onChanged: (value) => _note = value,
@@ -916,7 +917,7 @@ class _SuccessDialogState extends State<_SuccessDialog>
                 ),
               ),
 
-              const SizedBox(height: AppConstants.spacingL),
+              SizedBox(height: AppSpacing.lg),
 
               Text(
                 'Transaksi Berhasil! 🎉',
